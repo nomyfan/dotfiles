@@ -1,5 +1,5 @@
 Import-Module -Name Terminal-Icons
-
+Import-Module git-aliases -DisableNameChecking
 
 Import-Module -Name z
 
@@ -13,5 +13,5 @@ Set-PSReadlineoption -PredictionViewStyle ListView
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-Set-Alias g git
 Set-Alias vi nvim
+Set-Alias vim nvim

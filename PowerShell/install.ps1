@@ -7,3 +7,5 @@ Install-Module posh-git -Scope CurrentUser -Force
 
 Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
 Install-Module -Name z -Force
+
+Install-Module git-aliases -Scope CurrentUser -AllowClobber

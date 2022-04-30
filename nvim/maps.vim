@@ -25,3 +25,5 @@ nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 
+" Toggle line number
+nnoremap <silent> tn :set invnumber invrelativenumber<CR>

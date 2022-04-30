@@ -39,12 +39,15 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<S-C-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+  if client.name ~= 'tsserver' then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
 
   -- formatting
-  --if client.name == 'tsserver' then
-  --  client.resolved_capabilities.document_formatting = false
-  --end
+  if client.name == 'tsserver' then
+    client.resolved_capabilities.document_formatting = false
+  end
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
@@ -91,13 +94,11 @@ end
 
 nvim_lsp.flow.setup {
   on_attach = on_attach,
-  capabilities = capabilities
 }
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  capabilities = capabilities
 }
 
 nvim_lsp.diagnosticls.setup {
@@ -135,9 +136,8 @@ nvim_lsp.diagnosticls.setup {
     formatters = {
       eslint_d = {
         command = 'eslint_d',
-        rootPatterns = { '.git' },
-        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-        rootPatterns = { '.git' },
+        rootPatterns = {'.eslintrc', '.eslintrc.js', '.eslintrc.cjs', '.eslintrc.json', '.eslintrc.yaml', '.eslintrc.yml'},
+        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout', '--ext', '.js,.jsx,.ts,.tsx' },
       },
       prettier = {
         command = 'prettier_d_slim',
@@ -148,13 +148,13 @@ nvim_lsp.diagnosticls.setup {
     },
     formatFiletypes = {
       css = 'prettier',
-      javascript = 'prettier',
-      javascriptreact = 'prettier',
+      javascript = 'eslint_d',
+      javascriptreact = 'eslint_d',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'prettier',
-      typescriptreact = 'prettier',
+      typescript = 'eslint_d',
+      typescriptreact = 'eslint_d',
       json = 'prettier',
     }
   }

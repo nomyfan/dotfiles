@@ -11,7 +11,7 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'tami5/lspsaga.nvim'
 Plug 'folke/lsp-colors.nvim'
-"Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/nvim-lsp-installer'
 " https://stackoverflow.com/questions/66692772/nvim-treesitter-installation-on-windows
 " fix TSUpdate promote 'No C compiler found!'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }

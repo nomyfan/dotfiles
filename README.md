@@ -1,1 +1,1 @@
-# My neovim dotfiles
+# My dotfiles

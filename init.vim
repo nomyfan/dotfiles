@@ -1,7 +1,7 @@
 syntax enable
 set nocompatible
 set hlsearch
-"set number
+set number
 set relativenumber
 set expandtab
 set tabstop=2

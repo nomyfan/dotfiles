@@ -6,9 +6,21 @@ lua << EOF
 --vim.lsp.set_log_level("debug")
 EOF
 
+let g:workspace = 'personal'
+if getcwd() =~#'[\/][Ww]ork[\/]'
+  let g:workspace = 'work'
+endif
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
 local protocol = require'vim.lsp.protocol'
+local workspace = vim.g.workspace
+
+local jsx_fmt = 'prettier'
+if workspace == 'work' then
+  jsx_fmt = 'eslint_d'
+end
+local tsx_fmt = jsx_fmt
 
 -- Use an on_attach function to only map the following keys 
 -- after the language server attaches to the current buffer
@@ -109,6 +121,7 @@ nvim_lsp.diagnosticls.setup {
       eslint = {
         command = 'eslint_d',
         rootPatterns = { '.git' },
+        ignore = { 'node_modules/' },
         debounce = 100,
         args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
         sourceName = 'eslint_d',
@@ -141,20 +154,20 @@ nvim_lsp.diagnosticls.setup {
       },
       prettier = {
         command = 'prettier_d_slim',
-        rootPatterns = { '.git' },
+        rootPatterns = { '.prettierrc', '.prettierrc.js' },
         -- requiredFiles: { 'prettier.config.js' },
         args = { '--stdin', '--stdin-filepath', '%filename' }
       }
     },
     formatFiletypes = {
       css = 'prettier',
-      javascript = 'eslint_d',
-      javascriptreact = 'eslint_d',
+      javascript = jsx_fmt,
+      javascriptreact = jsx_fmt,
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'eslint_d',
-      typescriptreact = 'eslint_d',
+      typescript = tsx_fmt,
+      typescriptreact = tsx_fmt,
       json = 'prettier',
     }
   }

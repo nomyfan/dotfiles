@@ -31,5 +31,9 @@ nnoremap <silent> tn :set invnumber invrelativenumber<CR>
 " 'p' to paste, 'gv' to re-select what was originally selected. 'y' to copy it again
 xnoremap p pgvy
 
-" NvimTree bindings
+" NvimTree
 nnoremap <F8> :NvimTreeToggle<CR>
+
+" Telescope
+nnoremap <F5> :Telescope find_files find_command=rg,-i,--hidden,--files prompt_prefix=🔍 search_dirs=.
+nnoremap <F6> :Telescope live_grep prompt_prefix=🔍 search_dirs=.

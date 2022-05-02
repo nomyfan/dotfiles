@@ -49,4 +49,3 @@ endif
 
 runtime ./maps.vim
 
-

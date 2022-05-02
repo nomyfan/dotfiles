@@ -30,3 +30,6 @@ nnoremap <silent> tn :set invnumber invrelativenumber<CR>
 
 " 'p' to paste, 'gv' to re-select what was originally selected. 'y' to copy it again
 xnoremap p pgvy
+
+" NvimTree bindings
+nnoremap <F8> :NvimTreeToggle<CR>

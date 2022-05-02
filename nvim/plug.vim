@@ -3,10 +3,6 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-"
-Plug 'kristijanhusak/defx-git'
-Plug 'kristijanhusak/defx-icons'
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'tami5/lspsaga.nvim'
@@ -30,6 +26,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'

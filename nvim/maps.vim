@@ -37,3 +37,10 @@ nnoremap <F8> :NvimTreeToggle<CR>
 " Telescope
 nnoremap <F5> :Telescope find_files find_command=rg,-i,--hidden,--files prompt_prefix=🔍 search_dirs=.
 nnoremap <F6> :Telescope live_grep prompt_prefix=🔍 search_dirs=.
+
+" Term
+if has('win32')
+  nnoremap <F12> :tabnew term://pwsh<CR>i
+else
+  nnoremap <F12> :tabnew term://zsh<CR>i
+endif

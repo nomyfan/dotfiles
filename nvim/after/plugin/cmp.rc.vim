@@ -5,6 +5,11 @@ set completeopt=menuone,noinsert,noselect
 lua <<EOF
   local cmp = require'cmp'
   local lspkind = require'lspkind'
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
+  local luasnip = require'luasnip'
 
   cmp.setup({
     snippet = {
@@ -21,14 +26,52 @@ lua <<EOF
         behavior = cmp.ConfirmBehavior.Replace,
         select = true
       }),
+      --["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+      --["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
+       ["<Tab>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_next_item()
+                  elseif luasnip.expand_or_jumpable() then
+                    luasnip.expand_or_jump()
+                  elseif has_words_before() then
+                    cmp.complete()
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }
+      ),
+
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_prev_item()
+                  elseif luasnip.jumpable(-1) then
+                    luasnip.jump(-1)
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }
+      ),
     }),
-    sources = cmp.config.sources({
+    sources = {
       { name = 'nvim_lsp' },
-    }, {
+      { name = 'nvim_lua' },
+      { name = 'luasnip', option = { use_show_condition = false } },
       { name = 'buffer' },
-    }),
+    },
     formatting = {
-      format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+      format = function(entry, vim_item)
+        -- fancy icons and a name of kind
+        vim_item.kind = require("lspkind").presets.default[vim_item.kind]
+        -- set a name for each source
+        vim_item.menu = ({
+          buffer = "[Buff]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[LuaSnip]",
+          nvim_lua = "[Lua]",
+          latex_symbols = "[Latex]",
+        })[entry.source.name]
+        return vim_item
+      end,
     }
   })
 

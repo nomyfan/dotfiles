@@ -20,16 +20,17 @@ set cursorline
 
 " File types
 " JavaScript
-au BufNewFile,BufRead *.es6 setf javascript
+au BufNewFile,BufRead *.es6 set filetype=javascript
 " TypeScript
-au BufNewFile,BufRead *.tsx setf typescriptreact
+au BufNewFile,BufRead *.tsx set filetype=typescriptreact
+"au BufNewFile,BufRead *.jsx set filetype=typescriptreact
 " Markdown
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.mdx set filetype=markdown
 " Flow
 au BufNewFile,BufRead *.flow set filetype=javascript
 
-set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+set suffixesadd=.js,.es,.jsx,.tsx.json,.css,.less,.sass,.styl,.php,.py,.md
 
 
 " true color

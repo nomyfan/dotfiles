@@ -1,4 +1,4 @@
-call plug#begin('C:\Users\nomyfan\AppData\Local\nvim\plugged')
+call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-lualine/lualine.nvim'

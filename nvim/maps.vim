@@ -44,3 +44,9 @@ if has('win32')
 else
   nnoremap <F12> :tabnew term://zsh<CR>i
 endif
+
+" https://neovim.io/doc/user/fold.html
+" Search for 'OPENING AND CLOSING FOLDS' to see the keymaps
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable

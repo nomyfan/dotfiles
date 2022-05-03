@@ -1,3 +1,8 @@
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+set clipboard+=unnamedplus
+set splitright
+
 " Exchange a and A for jumping
 " to the end of line and do appending.
 inoremap aa <ESC>A
@@ -5,25 +10,27 @@ nnoremap a A
 nnoremap A a
 
 " Split window
-nnoremap <silent> ss :sp<CR><C-w>w
-nnoremap <silent> sv :vsp<CR><C-w>w
+nnoremap <silent> sj :set splitbelow<CR>:split<CR>
+nnoremap <silent> sk :set nosplitbelow<CR>:split<CR>
+nnoremap <silent> sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+nnoremap <silent> sl :set splitright<CR>:vsplit<CR>
 
 " Move window
-nmap <Space> <C-w>w
-map s<left> <C-w>h
-map s<up> <C-w>k
-map s<down> <C-w>j
-map s<right> <C-w>l
-map sh <C-w>h
-map sk <C-w>k
-map sj <C-w>j
-map sl <C-w>l
+nnoremap <LEADER><SPACE> <C-w>w
+nnoremap <LEADER><left> <C-w>h
+nnoremap <LEADER><up> <C-w>k
+nnoremap <LEADER><down> <C-w>j
+nnoremap <LEADER><right> <C-w>l
+nnoremap <LEADER>h <C-w>h
+nnoremap <LEADER>k <C-w>k
+nnoremap <LEADER>j <C-w>j
+nnoremap <LEADER>l <C-w>l
 
 " Resize window
-nmap <C-w><left> <C-w><
-nmap <C-w><right> <C-w>>
-nmap <C-w><up> <C-w>+
-nmap <C-w><down> <C-w>-
+nnoremap <C-w><left> :vertical res -10<CR>
+nnoremap <C-w><right> :vertical res +10<CR>
+nnoremap <C-w><up> :res +10<CR>
+nnoremap <C-w><down> :res -10<CR>
 
 " Toggle line number
 nnoremap <silent> tn :set invnumber invrelativenumber<CR>
@@ -31,15 +38,51 @@ nnoremap <silent> tn :set invnumber invrelativenumber<CR>
 " 'p' to paste, 'gv' to re-select what was originally selected. 'y' to copy it again
 xnoremap p pgvy
 
-" NvimTree
-nnoremap <F8> :NvimTreeToggle<CR>
+" NvimTree begin
+nnoremap <silent> <F8> :NvimTreeToggle<CR>
+" NvimTree end
 
-" Tagbar
-nnoremap <S-F8> :TagbarToggle<CR>
+" Tagbar begin
+nnoremap <silent> <S-F8> :TagbarToggle<CR>
+" Tabbar end
 
-" Telescope
+" Telescope begin
 nnoremap <F5> :Telescope find_files find_command=rg,-i,--hidden,--files prompt_prefix=🔍 search_dirs=.
 nnoremap <F6> :Telescope live_grep prompt_prefix=🔍 search_dirs=.
+nnoremap ;f :Telescope find_files find_command=rg,-i,--hidden,--files prompt_prefix=🔍<CR>
+nnoremap ;r :Telescope live_grep prompt_prefix=🔍<CR>
+"nnoremap <silent> \\ <cmd>Telescope buffers<cr>
+"nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
+" Telescope end
+
+inoremap <silent> ;; <ESC>
+inoremap <silent> ;w <ESC>:w<CR>l
+nnoremap <silent> ;w <ESC>:w<CR>
+nnoremap <silent> ;s <ESC>:wq<CR>
+nnoremap <silent> ;q <ESC>:q<CR>
+
+" LspSaga begin
+nnoremap <silent> <leader>ca :Lspsaga code_action<CR>
+vnoremap <silent> <leader>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent> <C-j> :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> <C-k> :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <silent> <C-h> :Lspsaga signature_help<CR>
+nnoremap <silent> <C-f> :lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-b> :lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+nnoremap <silent> gh :Lspsaga lsp_finder<CR>
+nnoremap <silent> gp :Lspsaga preview_definition<CR>
+nnoremap <silent> gr :Lspsaga rename<CR>
+
+lua << EOF
+local shell = 'pwsh'
+if not vim.fn.has('win32') then
+  shell = 'zsh'
+end
+vim.api.nvim_set_keymap('n', '<A-d>', "<cmd>lua require('lspsaga.floaterm').open_float_terminal('"..shell.."')<CR>", { noremap = true, silent = true })
+EOF
+tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
+" LspSaga end
 
 " Term
 if has('win32')
@@ -53,3 +96,6 @@ endif
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
+
+" Reload config(aka init.vim)
+nnoremap <silent> <S-R> :so $MYVIMRC<CR>

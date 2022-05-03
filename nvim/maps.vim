@@ -34,6 +34,9 @@ xnoremap p pgvy
 " NvimTree
 nnoremap <F8> :NvimTreeToggle<CR>
 
+" Tagbar
+nnoremap <S-F8> :TagbarToggle<CR>
+
 " Telescope
 nnoremap <F5> :Telescope find_files find_command=rg,-i,--hidden,--files prompt_prefix=🔍 search_dirs=.
 nnoremap <F6> :Telescope live_grep prompt_prefix=🔍 search_dirs=.

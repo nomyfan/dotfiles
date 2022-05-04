@@ -2,6 +2,7 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 set clipboard+=unnamedplus
 set splitright
+set mouse=a
 
 " Exchange a and A for jumping
 " to the end of line and do appending.

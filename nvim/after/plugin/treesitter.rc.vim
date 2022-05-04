@@ -29,7 +29,17 @@ require'nvim-treesitter.configs'.setup {
     "json",
     "yaml",
     "html",
-    "scss"
+    "scss",
+    "css",
+    "java",
+    "go",
+    "jsdoc",
+    "markdown",
+    "bash",
+    "dockerfile",
+    "rust",
+    "lua",
+    "python",
   },
   autotag = {
     enable = true,

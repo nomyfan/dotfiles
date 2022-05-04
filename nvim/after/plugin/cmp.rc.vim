@@ -30,6 +30,7 @@ lua <<EOF
       { name = 'nvim_lsp' },
       { name = 'vsnip' },
       { name = 'nvim_lua' },
+      { name = 'path' },
       { name = 'buffer' },
     },
     formatting = {

@@ -1,6 +1,7 @@
 call plug#begin()
 
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 

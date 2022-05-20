@@ -26,8 +26,12 @@ gs.setup({
 
     -- Actions
     map('n', '<LEADER>hp', gs.preview_hunk)
+    map('n', '<LEADER>hs', gs.stage_hunk)
     map('n', '<LEADER>hu', gs.undo_stage_hunk)
-    map('n', '<LEADER>hb', function() gs.blame_link({full=true}) end) 
+    map('n', '<LEADER>hr', gs.reset_hunk)
+    map('n', '<LEADER>hS', gs.stage_buffer)
+    map('n', '<LEADER>hR', gs.reset_buffer)
+    map('n', '<LEADER>hb', function() gs.blame_line({full=true}) end) 
     map('n', '<LEADER>tb', gs.toggle_current_line_blame)
     map('n', '<LEADER>hd', gs.diffthis)
     map('n', '<LEADER>hD', function() gs.diffthis('~') end)

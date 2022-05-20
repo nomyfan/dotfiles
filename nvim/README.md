@@ -1,7 +1,7 @@
 # Install LSP
 
 ```shell
-npm i -g typescript typescript-language-server diagnostic-languageserver
+npm i -g typescript typescript-language-server diagnostic-languageserver cssmodules-language-server
 ```
 
 # Install linters and formatters

@@ -112,6 +112,17 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities,
 }
 
+nvim_lsp.cssmodules_ls.setup({
+  on_attach = function(client, bufnr)
+    --client.resolved_capabilities.goto_definition = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  init_options = {
+    camelCase = false,
+  },
+})
+
 local has_rust_tools, rust_tools = pcall(require, 'rust-tools')
 if has_rust_tools then
 rust_tools.setup({

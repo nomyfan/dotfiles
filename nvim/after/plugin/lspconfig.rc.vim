@@ -113,6 +113,7 @@ nvim_lsp.tsserver.setup {
 }
 
 nvim_lsp.cssmodules_ls.setup({
+  filetypes = { 'javascriptreact', 'typescriptreact' },
   on_attach = function(client, bufnr)
     --client.resolved_capabilities.goto_definition = false
     on_attach(client, bufnr)

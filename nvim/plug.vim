@@ -38,4 +38,6 @@ Plug 'windwp/nvim-ts-autotag'
 
 Plug 'simrat39/rust-tools.nvim'
 
+Plug 'wakatime/vim-wakatime'
+
 call plug#end()

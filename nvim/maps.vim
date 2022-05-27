@@ -44,7 +44,7 @@ nnoremap <silent> <F8> :NvimTreeToggle<CR>
 " NvimTree end
 
 " Tagbar begin
-nnoremap <silent> <S-F8> :TagbarToggle<CR>
+"nnoremap <silent> <S-F8> :TagbarToggle<CR>
 " Tabbar end
 
 " Telescope begin

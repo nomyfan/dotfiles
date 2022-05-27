@@ -43,9 +43,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<C-n>', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   -- Use LspSaga
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  --buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  -- Use LspSaga
+  --buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- Use LspSaga
   --buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   --buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -107,10 +108,10 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
 nvim_lsp.cssmodules_ls.setup({
   filetypes = { 'javascriptreact', 'typescriptreact' },
@@ -161,12 +162,12 @@ end
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'pandoc' },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss' },
   init_options = {
     linters = {
       eslint = {
         command = 'eslint_d',
-        rootPatterns = { '.git' },
+        rootPatterns = { '.eslintrc', '.eslintrc.json', '.eslintrc.js', '.eslintrc.mjs' },
         ignore = { 'node_modules/' },
         debounce = 100,
         args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },

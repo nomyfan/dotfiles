@@ -37,4 +37,6 @@ return require('packer').startup(function(use)
       end,
   }
   use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-ts-autotag'
+  use "glepnir/lspsaga.nvim"
 end)

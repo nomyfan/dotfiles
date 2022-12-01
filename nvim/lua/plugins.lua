@@ -4,7 +4,7 @@ if (not status) then
   return
 end
 
-vim.cmd [[packadd packer.nvim]]
+--vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   use "wbthomason/packer.nvim"
@@ -36,4 +36,5 @@ return require('packer').startup(function(use)
           ts_update()
       end,
   }
+  use 'windwp/nvim-autopairs'
 end)

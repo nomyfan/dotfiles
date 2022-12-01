@@ -1,3 +1,4 @@
+require("nvim-treesitter.install").compilers = { "zig" }
 require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true

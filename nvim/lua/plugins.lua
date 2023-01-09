@@ -17,9 +17,9 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
 
   use 'norcalli/nvim-colorizer.lua'
-
-  use 'neovim/nvim-lspconfig' -- LSP
-
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  use 'glepnir/lspsaga.nvim'
   use 'onsails/lspkind-nvim'
 
   -- cmp
@@ -39,5 +39,5 @@ return require('packer').startup(function(use)
   }
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
-  use "glepnir/lspsaga.nvim"
+  use 'lewis6991/gitsigns.nvim'
 end)

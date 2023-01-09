@@ -41,4 +41,5 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-ts-autotag'
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-tree/nvim-tree.lua'
+  use 'simrat39/rust-tools.nvim'
 end)

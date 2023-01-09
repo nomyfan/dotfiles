@@ -36,3 +36,7 @@ nmap("<leader><left>", ":vertical res -10<CR>")
 nmap("<leader><right>", ":vertical res +10<CR>")
 nmap("<leader><up>", ":res -10<CR>")
 nmap("<leader><down>", ":res -10<CR>")
+
+-- Nvim tree keymaps
+nmap('<leader>tt', ':NvimTreeToggle<CR>')
+nmap('<leader>tf', ':NvimTreeFindFile<CR>')

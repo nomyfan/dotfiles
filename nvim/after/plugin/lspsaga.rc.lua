@@ -1,17 +1,9 @@
 local status, saga = pcall(require, "lspsaga")
 if (not status) then return end
 
-function map(mode, lhs, rhs, opts)
-  local options = { silent = true }
-  if opts then
-      options = vim.tbl_extend("force", options, opts)
-  end
-  vim.keymap.set(mode, lhs, rhs, options)
-end
-
-function nmap(lhs, rhs, opts)
-  map("n", lhs, rhs, opts)
-end
+local shared = require('shared')
+local map = shared.map
+local nmap = shared.nmap
 
 saga.init_lsp_saga()
 nmap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")

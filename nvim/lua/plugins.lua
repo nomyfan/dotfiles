@@ -42,4 +42,6 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-tree/nvim-tree.lua'
   use 'simrat39/rust-tools.nvim'
+
+  use 'wakatime/vim-wakatime'
 end)

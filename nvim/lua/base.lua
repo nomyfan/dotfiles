@@ -11,5 +11,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.ai = true
 opt.si = true
+opt.fileformats:append('unix,dos')
 
 opt.cursorline = true

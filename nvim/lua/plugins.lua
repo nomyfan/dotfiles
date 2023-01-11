@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'onsails/lspkind-nvim'
+  use 'simrat39/rust-tools.nvim'
 
   -- cmp
   use 'hrsh7th/cmp-buffer'
@@ -41,7 +42,11 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-ts-autotag'
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-tree/nvim-tree.lua'
-  use 'simrat39/rust-tools.nvim'
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   use 'wakatime/vim-wakatime'
 end)

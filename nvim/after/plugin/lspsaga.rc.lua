@@ -5,7 +5,11 @@ local shared = require('shared')
 local map = shared.map
 local nmap = shared.nmap
 
-saga.init_lsp_saga()
+saga.init_lsp_saga({
+  code_action_lightbulb = {
+    virtual_text = false
+  }
+})
 nmap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
 nmap("]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>")
 nmap("[E", function()

@@ -34,3 +34,15 @@ nmap('<Leader>tf', ':NvimTreeFindFile<CR>')
 
 -- Reload config(aka init.lua)
 nmap('<S-R>', ':so $MYVIMRC<CR>')
+
+-- Telescope
+nmap('<Leader>ff', ':Telescope fd find_command=rg,-i,--hidden,--files search_dir=.<CR>')
+nmap('<Leader>fg', ':Telescope live_grep search_dir=.<CR>')
+nmap('<Leader>ll', function()
+  require('nvim-tree-telescope').launch_find_files({
+    --find_command = { 'rg', '-i', '--hidden', '--files' }
+  })
+end)
+nmap('<Leader>lg', function()
+  require('nvim-tree-telescope').launch_live_grep()
+end)

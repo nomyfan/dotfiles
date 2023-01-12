@@ -28,6 +28,9 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/nvim-cmp'
+  -- code snippets
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/cmp-vsnip'
 
   use 'akinsho/nvim-bufferline.lua'
 

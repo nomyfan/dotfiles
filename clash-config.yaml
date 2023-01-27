@@ -1,0 +1,66 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+
+dns:
+  enable: false
+
+proxies:
+  - name: vmess
+    type: vmess
+    server: server.domain.com
+    port: 443
+    uuid: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    alterId: 233
+    cipher: auto
+    tls: true
+    network: ws
+    servername: server.domain.com
+    ws-opts:
+      path: /ws-path
+      headers:
+        Host: server.domain.com
+
+rule-providers:
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - vmess
+
+rules:
+  - DOMAIN-SUFFIX,haskell.org,DIRECT
+  - DOMAIN-SUFFIX,cache-redirector.jetbrains.com,DIRECT
+  - DOMAIN-SUFFIX,dl.google.com,DIRECT
+  - DOMAIN-SUFFIX,repo.maven.apache.org,DIRECT
+  - DOMAIN-SUFFIX,jcenter.bintray.com,DIRECT
+  - DOMAIN-SUFFIX,plugins-artifacts.gradle.org,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,proxy,Proxy
+  - RULE-SET,gfw,Proxy
+  - MATCH,Proxy

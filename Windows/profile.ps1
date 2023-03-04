@@ -1,10 +1,8 @@
 Import-Module -Name Terminal-Icons
 Import-Module git-aliases -DisableNameChecking
 
-Import-Module -Name z
-
 Import-Module posh-git
-oh-my-posh init pwsh -c "C:\Users\nomyfan\AppData\Local\Programs\oh-my-posh\themes\star.omp.json"  | Invoke-Expression
+oh-my-posh init pwsh -c (Join-Path $env:LOCALAPPDATA "Programs" "oh-my-posh" "themes" "star.omp.json") | Invoke-Expression
 
 
 Import-Module PSReadLine
@@ -15,3 +13,8 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Alias vi nvim
 Set-Alias vim nvim
+
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --hook $hook powershell | Out-String)
+})

@@ -6,6 +6,13 @@ Install-Module -Name Terminal-Icons -Repository PSGallery -Force
 Install-Module posh-git -Scope CurrentUser -Force
 
 Install-Module PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
-Install-Module -Name z -Force
+#Install-Module -Name z -Force
 
 Install-Module git-aliases -Scope CurrentUser -AllowClobber
+
+# Ensure rustup has been installed
+cargo install zoxide --locked
+cargo install ripgrep
+
+# Copy dotfiles
+Copy-Item ./profile.ps1 $PROFILE

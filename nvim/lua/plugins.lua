@@ -52,4 +52,5 @@ return require('packer').startup(function(use)
   }
 
   use 'wakatime/vim-wakatime'
+  use 'mhartington/formatter.nvim'
 end)

@@ -26,7 +26,7 @@ nmap("<Leader>l", "<C-w>l")
 -- Resize window
 nmap("<Leader><Left>", ":vertical res -10<CR>")
 nmap("<Leader><Right>", ":vertical res +10<CR>")
-nmap("<Leader><Up>", ":res -10<CR>")
+nmap("<Leader><Up>", ":res +10<CR>")
 nmap("<Leader><Down>", ":res -10<CR>")
 
 -- Nvim tree keymaps
@@ -63,3 +63,5 @@ nmap("gh", "<Cmd>Lspsaga lsp_finder<CR>")
 nmap("gd", "<Cmd>Lspsaga goto_definition<CR>")
 nmap("gp", "<Cmd>Lspsaga peek_definition<CR>")
 map({ "n", "v" }, "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
+
+nmap("<Leader>f", ":Format<CR>", { silent = true })

@@ -13,6 +13,8 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-Alias vi nvim
 Set-Alias vim nvim
+Set-Alias y yarn
+Set-Alias p pnpm
 
 Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }

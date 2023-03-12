@@ -1,0 +1,42 @@
+[buildPlans.iosevka-custom]
+family = "Iosevka Custom"
+spacing = "fontconfig-mono"
+serifs = "sans"
+no-cv-ss = true
+export-glyph-names = false
+
+  [buildPlans.iosevka-custom.variants]
+  inherits = "ss09"
+
+    [buildPlans.iosevka-custom.variants.design]
+    capital-v = "straight"
+    capital-w = "straight"
+    capital-x = "straight-serifless"
+    capital-y = "straight-serifless"
+    capital-z = "straight-serifless"
+    f = "serifless"
+    i = "serifed"
+    t = "standard-short-neck2"
+    w = "straight"
+    x = "straight-serifless"
+    z = "straight-serifless"
+    zero = "slashed"
+    two = "curly-neck"
+    three = "flat-top"
+    four = "closed-non-crossing"
+    five = "oblique-upper-left-bar"
+    seven = "straight-crossbar"
+    tilde = "low"
+    pilcrow = "low"
+    paren = "flat-arc"
+    brace = "curly"
+    ampersand = "upper-open"
+    at = "fourfold"
+    dollar = "open"
+    percent = "rings-continuous-slash-also-connected"
+    ascii-single-quote = "straight"
+    question = "corner-flat-hooked"
+    lig-neq = "slightly-slanted-dotted"
+
+  [buildPlans.iosevka-custom.ligations]
+  inherits = "clike"

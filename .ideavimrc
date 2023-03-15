@@ -46,3 +46,9 @@ nnoremap <leader>l <C-w>l
 
 nnoremap <silent> <C-o> <C-o>zz
 nnoremap <silent> <C-i> <C-i>zz
+
+nmap <silent> <leader>F <Action>(FindInPath)
+nmap <silent> <leader>f <Action>(Find)
+nmap <silent> <leader>R <Action>(ReplaceInPath)
+nmap <silent> <leader>r <Action>(Replace)
+

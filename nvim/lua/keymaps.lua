@@ -37,16 +37,16 @@ nmap('<Leader>tf', ':NvimTreeFindFile<CR>')
 nmap('<S-R>', ':so $MYVIMRC<CR>')
 
 -- Telescope
-nmap('<Leader>ff', ':Telescope fd find_command=rg,-i,--hidden,--files search_dir=.<CR>')
-nmap('<Leader>fg', ':Telescope live_grep search_dir=.<CR>')
-nmap('<Leader>ll', function()
-  require('nvim-tree-telescope').launch_find_files({
-    --find_command = { 'rg', '-i', '--hidden', '--files' }
-  })
-end)
-nmap('<Leader>lg', function()
-  require('nvim-tree-telescope').launch_live_grep()
-end)
+nmap('<Leader>f', ':Telescope fd find_command=rg,-i,--hidden,--files search_dir=.<CR>')
+nmap('<Leader>G', ':Telescope live_grep search_dir=.<CR>')
+--nmap('<Leader>ll', function()
+--  require('nvim-tree-telescope').launch_find_files({
+--    --find_command = { 'rg', '-i', '--hidden', '--files' }
+--  })
+--end)
+--nmap('<Leader>lg', function()
+--  require('nvim-tree-telescope').launch_live_grep()
+--end)
 
 -- LspSaga
 nmap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
@@ -64,4 +64,4 @@ nmap("gd", "<Cmd>Lspsaga goto_definition<CR>")
 nmap("gp", "<Cmd>Lspsaga peek_definition<CR>")
 map({ "n", "v" }, "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
 
-nmap("<Leader>f", ":Format<CR>", { silent = true })
+nmap("<Leader>F", ":Format<CR>", { silent = true })

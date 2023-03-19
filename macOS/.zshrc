@@ -9,5 +9,6 @@ export GPG_TTY=$(tty)
 
 alias y="yarn"
 alias p="pnpm"
+alias cls="clear"
 
 eval "$(zoxide init zsh)"

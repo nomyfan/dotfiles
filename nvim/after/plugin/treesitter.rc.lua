@@ -39,5 +39,11 @@ require("nvim-treesitter.configs").setup({
   }
 })
 
+-- https://www.jmaguire.tech/posts/treesitter_folding/
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+require('shared').nvim_create_augroups({
+  open_folds = {
+    {"BufReadPost,FileReadPost", "*", "normal zR"}
+  }
+})

@@ -16,6 +16,7 @@ export-glyph-names = false
     capital-z = "straight-serifless"
     f = "serifless"
     i = "serifed"
+    l = "serifed-flat-tailed"
     t = "standard-short-neck2"
     w = "straight"
     x = "straight-serifless"
@@ -37,7 +38,11 @@ export-glyph-names = false
     percent = "rings-continuous-slash-also-connected"
     ascii-single-quote = "straight"
     question = "corner-flat-hooked"
+    lig-ltgteq = "flat"
     lig-neq = "slightly-slanted-dotted"
+    lig-equal-chain = "with-notch"
+    lig-double-arrow-bar = "without-notch"
+    lig-single-arrow-bar = "without-notch"
 
   [buildPlans.iosevka-custom.ligations]
   inherits = "clike"
@@ -46,3 +51,4 @@ export-glyph-names = false
 shape = 600
 menu = 5
 css = "normal"
+

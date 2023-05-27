@@ -13,3 +13,5 @@ nix-env -iA nixpkgs.jq
 nix-env -iA nixpkgs.gnupg
 nix-env -iA nixpkgs.delta
 nix-env -iA nixpkgs.jless
+nix-env -iA nixpkgs.tree
+

@@ -12,6 +12,14 @@ function M.nmap(lhs, rhs, opts)
   M.map('n', lhs, rhs, opts)
 end
 
+function M.is_macos()
+  return 1 == vim.fn.has "macunix"
+end
+
+function M.is_win()
+  return 1 == vim.fn.has "win32"
+end
+
 -- function to create a list of commands and convert them to autocommands
 -------- This function is taken from https://github.com/norcalli/nvim_utils
 function M.nvim_create_augroups(definitions)

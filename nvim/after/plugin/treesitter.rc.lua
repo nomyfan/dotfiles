@@ -1,4 +1,7 @@
-require("nvim-treesitter.install").compilers = { "zig" }
+if require('shared').is_win() then
+  require("nvim-treesitter.install").compilers = { "zig" }
+end
+
 require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true

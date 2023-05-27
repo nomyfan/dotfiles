@@ -3,13 +3,11 @@ require('highlight')
 require('keymaps')
 require('plugins')
 
-local has = vim.fn.has
-local is_macos = has "macunix"
-local is_win = has "win32"
+shared = require('shared')
 
-if is_macos then
+if shared.is_macos() then
   require("macos")
 end
-if is_win then
+if shared.is_win() then
   require("windows")
 end

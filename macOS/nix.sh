@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 # Ensure nix has been installed
+nix-env -iA nixpkgs.openssl
 nix-env -iA nixpkgs.ripgrep
 nix-env -iA nixpkgs.fd
 nix-env -iA nixpkgs.htop

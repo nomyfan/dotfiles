@@ -20,5 +20,6 @@ in
     rustup
     exa
     bat
+    hyperfine
     ;
 }

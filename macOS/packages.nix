@@ -21,5 +21,6 @@ in
     exa
     bat
     hyperfine
+    starship
     ;
 }

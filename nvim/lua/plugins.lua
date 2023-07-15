@@ -51,7 +51,11 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
+
   use 'wakatime/vim-wakatime'
-  use 'mhartington/formatter.nvim'
   use 'github/copilot.vim'
 end)

@@ -64,4 +64,4 @@ nmap("gd", "<Cmd>Lspsaga goto_definition<CR>")
 nmap("gp", "<Cmd>Lspsaga peek_definition<CR>")
 map({ "n", "v" }, "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
 
-nmap("<Leader>F", ":Format<CR>", { silent = true })
+nmap("<Leader>F", ":lua vim.lsp.buf.format()<CR>", { silent = true })

@@ -51,6 +51,18 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
+-- CSS modules
+nvim_lsp.cssmodules_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+-- Tailwind CSS
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 -- Rust
 local has_rust_tools, rust_tools = pcall(require, 'rust-tools')
 if has_rust_tools then

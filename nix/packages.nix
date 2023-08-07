@@ -15,9 +15,7 @@ in
     gnupg
     delta
     jless
-    tree
     du-dust
-    rustup
     exa
     bat
     hyperfine

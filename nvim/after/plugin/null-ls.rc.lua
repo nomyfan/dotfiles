@@ -34,7 +34,7 @@ null_ls.setup({
     }),
     null_ls.builtins.diagnostics.eslint_d.with({
       runtime_condition = function(params)
-        return eslint_root(params.bufname) ~= nil
+        return not not eslint_root(params.bufname)
       end,
       cwd = helpers.cache.by_bufnr(function(params)
         return eslint_root(params.bufname)

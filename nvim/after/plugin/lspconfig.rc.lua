@@ -15,6 +15,9 @@ end
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- Python
+nvim_lsp.pylsp.setup{}
+
 -- TypeScript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,

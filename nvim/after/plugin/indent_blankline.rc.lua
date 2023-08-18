@@ -10,7 +10,7 @@ vim.opt.listchars:append "tab:⇥⇥"
 -- vim.opt.listchars:append "nbsp:⋅"
 
 vim.opt.termguicolors = true
-vim.cmd [[highlight IndentBlanklineIndent1 guifg=#839dab gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#454545 gui=nocombine]]
 
 ib.setup {
   show_end_of_line = true,

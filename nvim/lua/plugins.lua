@@ -70,4 +70,8 @@ return require('packer').startup(function(use)
     'numToStr/Comment.nvim',
     requires = { "JoosepAlviste/nvim-ts-context-commentstring" }
   }
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    requires = { "nvim-treesitter/nvim-treesitter" }
+  }
 end)

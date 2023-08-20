@@ -17,5 +17,8 @@ alias l="exa -al"
 alias ll="exa -l"
 alias lt="exa -T"
 
+export UTILS_HOME="$HOME/.utils"
+alias opengh="node $UTILS_HOME/opengh.mjs"
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

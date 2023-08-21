@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.mouse:append('a')
+opt.mouse = "a"
 opt.hlsearch = true
 opt.number = true
 opt.relativenumber = true

@@ -17,6 +17,8 @@ alias l="exa -al"
 alias ll="exa -l"
 alias lt="exa -T"
 
+alias cvite="create-x --url https://github.com/nomyfan/templates/tree/main/vite-react-ts --name"
+
 export UTILS_HOME="$HOME/.utils"
 alias opengh="node $UTILS_HOME/opengh.mjs"
 

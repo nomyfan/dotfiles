@@ -21,6 +21,7 @@ alias cvite="create-x --url https://github.com/nomyfan/templates/tree/main/vite-
 
 export UTILS_HOME="$HOME/.utils"
 alias opengh="node $UTILS_HOME/opengh.mjs"
+alias ghu="node $UTILS_HOME/ghu.mjs"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

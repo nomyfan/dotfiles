@@ -65,3 +65,5 @@ nmap("gp", "<Cmd>Lspsaga peek_definition<CR>")
 map({ "n", "v" }, "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
 
 nmap("<Leader>F", ":lua vim.lsp.buf.format()<CR>", { silent = true })
+
+map({ "t" }, "<Esc>", "<C-\\><C-n>", { silent = true })

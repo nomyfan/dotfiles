@@ -32,7 +32,7 @@ null_ls.setup({
       },
       filetypes = { 'html', 'markdown', 'json', 'jsonc', 'yaml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'scss', 'markdown.mdx' },
     }),
-    null_ls.builtins.diagnostics.eslint_d.with({
+    null_ls.builtins.diagnostics.eslint.with({
       runtime_condition = function(params)
         return not not eslint_root(params.bufname)
       end,

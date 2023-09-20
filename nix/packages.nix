@@ -19,5 +19,6 @@
     bat
     hyperfine
     starship
-    ;
+    xz
+  ;
 }

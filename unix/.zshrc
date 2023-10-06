@@ -8,7 +8,15 @@ source $ZSH/oh-my-zsh.sh
 export GPG_TTY=$(tty)
 
 alias y="yarn"
+alias yi="yarn install"
+alias yb="yarn build"
+alias ya="yarn add"
+
 alias p="pnpm"
+alias pi="pnpm install"
+alias pb="pnpm build"
+alias pa="pnpm add"
+
 alias cls="clear"
 alias vim="nvim"
 

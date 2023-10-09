@@ -13,15 +13,15 @@ nmap("sh", ":set nosplitright<CR>:vsplit<CR>", { silent = true} )
 nmap("sl", ":set splitright<CR>:vsplit<CR>", { silent = true} )
 
 -- Move window
-nmap("<Leader><SPACE>", "<C-w>w")
+nmap("<Leader><Tab>", "<C-w>w")
 --nmap("<Leader><Left>", "<C-w>h")
 --nmap("<Leader><Down>", "<C-w>j")
 --nmap("<Leader><Up>", "<C-w>k")
 --nmap("<Leader><Right>", "<C-w>l")
-nmap("<Leader>h", "<C-w>h")
-nmap("<Leader>j", "<C-w>j")
-nmap("<Leader>k", "<C-w>k")
-nmap("<Leader>l", "<C-w>l")
+nmap("<Leader>wh", "<C-w>h")
+nmap("<Leader>wj", "<C-w>j")
+nmap("<Leader>wk", "<C-w>k")
+nmap("<Leader>wl", "<C-w>l")
 
 -- Resize window
 nmap("<Leader><Left>", ":vertical res -10<CR>")
@@ -65,5 +65,11 @@ nmap("gp", "<Cmd>Lspsaga peek_definition<CR>")
 map({ "n", "v" }, "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})
 
 nmap("<Leader>F", ":lua vim.lsp.buf.format()<CR>", { silent = true })
+
+-- Format on save
+vim.api.nvim_create_user_command("W", function()
+  vim.cmd("lua vim.lsp.buf.format()")
+  vim.cmd("w")
+end ,{})
 
 map({ "t" }, "<Esc>", "<C-\\><C-n>", { silent = true })

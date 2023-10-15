@@ -15,7 +15,11 @@ try {
   }
 } catch (e) {
   const stderr = e.stderr.toString().trim();
-  if (stderr && !stderr.includes("fatal: not a git repository")) {
-    console.error(stderr);
+  if (stderr) {
+    if (stderr.includes("fatal: not a git repository")) {
+      execSync(`open https://github.com`);
+    } else {
+      console.error(stderr);
+    }
   }
 }

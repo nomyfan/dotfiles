@@ -20,5 +20,6 @@
     hyperfine
     starship
     xz
+    _7zz
   ;
 }

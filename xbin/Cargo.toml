@@ -1,0 +1,17 @@
+[package]
+name = "xbin"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+open = "5"
+clap = "4"
+which = "5"
+
+[[bin]]
+name = "open"
+path = "src/open.rs"
+
+[[bin]]
+name = "which"
+path = "src/which.rs"

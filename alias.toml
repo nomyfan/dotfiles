@@ -1,0 +1,43 @@
+[aliases]
+# corepack
+yarn = "corepack yarn"
+yarnpkg = "corepack yarnpkg"
+npm = "corepack npm"
+npx = "corepack npx"
+pnpm = "corepack pnpm"
+pnpx = "corepack pnpx"
+# yarn
+y = "yarn"
+yi = "yarn install"
+ya = "yarn add"
+yb = "yarn build"
+# pnpm
+p = "pnpm"
+pi = "pnpm install"
+pa = "pnpm add"
+pb = "pnpm build"
+# nvim
+vim = "nvim"
+# exa
+ls = "exa"
+l = "exa -al"
+ll = "exa -l"
+lt = "exa -T"
+# create-x
+cvite = "create-x --url https://github.com/nomyfan/templates/tree/main/vite-react-ts --name"
+
+[aliases.cls]
+zsh = "clear"
+
+[aliases.opengh]
+zsh = "node $HOME/.ss/JavaScript/opengh.mjs"
+powershell = "$js = (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,opengh.mjs); node $js $args"
+
+[aliases.ghu]
+zsh = "node $HOME/.ss/JavaScript/ghu.mjs"
+powershell = "$js = (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,ghu.mjs); node $js $args"
+
+[aliases.rmrf]
+zsh = "rm -rf"
+powershell = "Remove-Item -Recurse -Force"
+

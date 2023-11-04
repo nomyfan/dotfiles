@@ -31,11 +31,11 @@ zsh = "clear"
 
 [aliases.opengh]
 zsh = "node $HOME/.ss/JavaScript/opengh.mjs"
-powershell = "$js = (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,opengh.mjs); node $js $args"
+powershell = "node (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,opengh.mjs)"
 
 [aliases.ghu]
 zsh = "node $HOME/.ss/JavaScript/ghu.mjs"
-powershell = "$js = (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,ghu.mjs); node $js $args"
+powershell = "node (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,ghu.mjs)"
 
 [aliases.rmrf]
 zsh = "rm -rf"

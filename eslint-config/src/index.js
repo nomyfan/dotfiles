@@ -7,7 +7,16 @@ const configBasic = {
   parser: "@typescript-eslint/parser",
   plugins: ["import"],
   rules: {
-    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        ignoreRestSiblings: true,
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+      },
+    ],
 
     "import/default": "error",
     "import/namespace": "error",

@@ -9,37 +9,20 @@ export-glyph-names = false
   inherits = "ss09"
 
     [buildPlans.iosevka.variants.design]
-    capital-x = "straight-serifless"
-    capital-y = "straight-serifless"
-    capital-z = "straight-serifless"
-    f = "serifless"
     i = "serifed"
-    l = "tailed-serifed"
-    t = "bent-hook"
-    x = "straight-serifless"
-    z = "straight-serifless"
-    lower-alpha = "crossing"
-    zero = "slashed"
+    zero = "slashed-split"
     one = "base"
-    two = "curly-neck"
+    two = "straight-neck"
     three = "flat-top"
     four = "closed-non-crossing"
-    five = "oblique-upper-left-bar"
-    six = "closed-contour"
     seven = "bend-serifless-crossbar"
-    eight = "crossing-asymmetric"
-    nine = "closed-contour"
-    tilde = "low"
+    nine = "straight-bar"
     paren = "flat-arc"
     brace = "curly-flat-boundary"
     ampersand = "upper-open"
     at = "compact"
-    dollar = "open"
     percent = "rings-continuous-slash-also-connected"
-    ascii-single-quote = "straight"
-    question = "corner"
-    pilcrow = "low"
-    cent = "open"
+    question = "corner-flat-hooked"
     lig-ltgteq = "flat"
     lig-neq = "slightly-slanted-dotted"
     lig-equal-chain = "with-notch"
@@ -79,11 +62,6 @@ css = 800
 shape = 900
 menu = 900
 css = 900
-
-[buildPlans.iosevka.widths.normal]
-shape = 600
-menu = 5
-css = "normal"
 
 [buildPlans.iosevka.slopes.upright]
 angle = 0

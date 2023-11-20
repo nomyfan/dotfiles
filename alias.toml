@@ -25,6 +25,8 @@ ll = "exa -l"
 lt = "exa -T"
 # create-x
 cvite = "create-x --url https://github.com/nomyfan/templates/tree/main/vite-react-ts --name"
+# bat
+batp = "bat -p"
 
 [aliases.cls]
 zsh = "clear"

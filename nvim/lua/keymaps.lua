@@ -37,16 +37,8 @@ nmap('<Leader>tf', ':NvimTreeFindFile<CR>')
 nmap('<S-R>', ':so $MYVIMRC<CR>')
 
 -- Telescope
-nmap('<Leader>f', ':Telescope fd find_command=rg,-i,--hidden,--files search_dir=.<CR>')
-nmap('<Leader>G', ':Telescope live_grep search_dir=.<CR>')
---nmap('<Leader>ll', function()
---  require('nvim-tree-telescope').launch_find_files({
---    --find_command = { 'rg', '-i', '--hidden', '--files' }
---  })
---end)
---nmap('<Leader>lg', function()
---  require('nvim-tree-telescope').launch_live_grep()
---end)
+nmap("<Leader>f", require('nvim-tree-telescope').launch_find_files)
+nmap('<Leader>G', require('nvim-tree-telescope').launch_live_grep)
 
 -- LspSaga
 nmap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
@@ -73,3 +65,8 @@ vim.api.nvim_create_user_command("W", function()
 end ,{})
 
 map({ "t" }, "<Esc>", "<C-\\><C-n>", { silent = true })
+
+-- Switch buffer
+map("n", "<Tab>", ":bnext<CR>", { silent = true })
+map("n", "<S-Tab>", ":bprev<CR>", { silent = true })
+

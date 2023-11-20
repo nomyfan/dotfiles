@@ -1,5 +1,5 @@
 -- @see https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#find-file-from-node-in-telescope
-local lib = require'nvim-tree.lib'
+local api = require("nvim-tree.api")
 local openfile = require'nvim-tree.actions.node.open-file'
 local actions = require'telescope.actions'
 local action_state = require'telescope.actions.state'
@@ -31,16 +31,21 @@ function M.launch_telescope(func_name, opts)
   if not telescope_status_ok then
     return
   end
-  local lib_status_ok, lib = pcall(require, "nvim-tree.lib")
-  if not lib_status_ok then
-    return
+  local node = api.tree.get_node_under_cursor()
+
+  local basedir = "."
+  if node == nil then
+    if TreeExplorer ~= nil then
+      basedir = TreeExplorer.cwd
+    end
+  else
+    local is_folder = node.fs_stat and node.fs_stat.type == 'directory' or false
+    basedir = is_folder and node.absolute_path or vim.fn.fnamemodify(node.absolute_path, ":h")
+    if (node.name == '..' and TreeExplorer ~= nil) then
+      basedir = TreeExplorer.cwd
+    end
   end
-  local node = lib.get_node_at_cursor()
-  local is_folder = node.fs_stat and node.fs_stat.type == 'directory' or false
-  local basedir = is_folder and node.absolute_path or vim.fn.fnamemodify(node.absolute_path, ":h")
-  if (node.name == '..' and TreeExplorer ~= nil) then
-    basedir = TreeExplorer.cwd
-  end
+
   opts = opts or {}
   opts.cwd = basedir
   opts.search_dirs = { basedir }

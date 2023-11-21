@@ -31,18 +31,20 @@ function M.launch_telescope(func_name, opts)
   if not telescope_status_ok then
     return
   end
-  local node = api.tree.get_node_under_cursor()
 
   local basedir = "."
-  if node == nil then
-    if TreeExplorer ~= nil then
-      basedir = TreeExplorer.cwd
-    end
-  else
-    local is_folder = node.fs_stat and node.fs_stat.type == 'directory' or false
-    basedir = is_folder and node.absolute_path or vim.fn.fnamemodify(node.absolute_path, ":h")
-    if (node.name == '..' and TreeExplorer ~= nil) then
-      basedir = TreeExplorer.cwd
+  if api.tree.is_visible() then
+    local node = api.tree.get_node_under_cursor()
+    if node == nil then
+      if TreeExplorer ~= nil then
+        basedir = TreeExplorer.cwd
+      end
+    else
+      local is_folder = node.fs_stat and node.fs_stat.type == 'directory' or false
+      basedir = is_folder and node.absolute_path or vim.fn.fnamemodify(node.absolute_path, ":h")
+      if (node.name == '..' and TreeExplorer ~= nil) then
+        basedir = TreeExplorer.cwd
+      end
     end
   end
 

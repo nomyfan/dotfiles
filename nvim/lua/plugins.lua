@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
   --  requires = { 'tjdevries/colorbuddy.nvim' }
   --}
   use 'marko-cerovac/material.nvim'
+  use 'dasupradyumna/midnight.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
 

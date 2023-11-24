@@ -37,21 +37,31 @@ nmap('<Leader>tf', ':NvimTreeFindFile<CR>')
 nmap('<S-R>', ':so $MYVIMRC<CR>')
 
 -- Telescope
-nmap("<Leader>f", require('nvim-tree-telescope').launch_find_files)
+nmap("<Leader>fD", require('nvim-tree-telescope').launch_find_files)
+nmap("<Leader>fd", function(opts)
+  opts = opts or {}
+  opts.basedir = '.'
+  return require('nvim-tree-telescope').launch_find_files(opts)
+end)
 nmap('<Leader>G', require('nvim-tree-telescope').launch_live_grep)
+nmap('<Leader>g', function(opts)
+  opts = opts or {}
+  opts.basedir = '.' 
+  return require('nvim-tree-telescope').launch_live_grep(opts)
+end)
 
 -- LspSaga
 nmap("[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
 nmap("]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>")
 nmap("[E", function()
-  require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+  require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end)
 nmap("]E", function()
-  require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+  require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 end)
 nmap("K", "<Cmd>Lspsaga hover_doc<CR>")
-nmap("gr", "<Cmd>Lspsaga rename<CR>")
-nmap("gh", "<Cmd>Lspsaga lsp_finder<CR>")
+nmap("rn", "<Cmd>Lspsaga rename<CR>")
+nmap("fi", "<Cmd>Lspsaga finder<CR>")
 nmap("gd", "<Cmd>Lspsaga goto_definition<CR>")
 nmap("gp", "<Cmd>Lspsaga peek_definition<CR>")
 map({ "n", "v" }, "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", {})

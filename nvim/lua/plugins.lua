@@ -47,8 +47,7 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-tree/nvim-tree.lua'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  -- or                            , branch = '0.1.x',
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 

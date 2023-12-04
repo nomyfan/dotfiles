@@ -18,15 +18,19 @@ pa = "pnpm add"
 pb = "pnpm build"
 # nvim
 vim = "nvim"
-# exa
-ls = "exa"
-l = "exa -al"
-ll = "exa -l"
-lt = "exa -T"
+# eza
+ls = "eza"
+l = "eza -al"
+ll = "eza -l"
+lt = "eza -T"
 # create-x
 cvite = "create-x --url https://github.com/nomyfan/templates/tree/main/vite-react-ts --name"
 # bat
 batp = "bat -p"
+# git
+gds = "git diff --staged"
+grmc = "git rm -r --cached"
+gsn = "git show --name-only"
 
 [aliases.cls]
 zsh = "clear"
@@ -43,5 +47,3 @@ powershell = "node (Join-Path $HOME -ChildPath .ss -AdditionalChildPath JavaScri
 zsh = "rm -rf"
 powershell = "Remove-Item -Recurse -Force"
 
-[aliases.gds]
-powershell = "git diff --staged"

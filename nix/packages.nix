@@ -15,7 +15,7 @@
     delta
     jless
     du-dust
-    exa
+    eza
     bat
     hyperfine
     starship

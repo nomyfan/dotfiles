@@ -41,14 +41,14 @@ require("nvim-treesitter.configs").setup({
   autotag = {
     enable = true
   },
-  -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#plugins-with-a-pre-comment-hook
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
 })
 
 -- https://www.jmaguire.tech/posts/treesitter_folding/
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
+
+-- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#plugins-with-a-pre-comment-hook
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+}

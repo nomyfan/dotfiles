@@ -33,13 +33,15 @@ zsh = "clear"
 
 [aliases.opengh]
 zsh = "node $HOME/.ss/JavaScript/opengh.mjs"
-powershell = "node (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,opengh.mjs)"
+powershell = "node (Join-Path $HOME -ChildPath .ss -AdditionalChildPath JavaScript,opengh.mjs)"
 
 [aliases.ghu]
 zsh = "node $HOME/.ss/JavaScript/ghu.mjs"
-powershell = "node (Join-Path $env:HOME -ChildPath .ss -AdditionalChildPath JavaScript,ghu.mjs)"
+powershell = "node (Join-Path $HOME -ChildPath .ss -AdditionalChildPath JavaScript,ghu.mjs)"
 
 [aliases.rmrf]
 zsh = "rm -rf"
 powershell = "Remove-Item -Recurse -Force"
 
+[aliases.gds]
+powershell = "git diff --staged"

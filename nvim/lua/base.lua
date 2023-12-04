@@ -15,4 +15,3 @@ opt.fileformats:append('unix,dos')
 
 opt.cursorline = true
 
-vim.g.skip_ts_context_commentstring_module = true

@@ -16,5 +16,11 @@ function setup_material()
   vim.cmd.colorscheme 'material'
 end
 
+function setup_solarized_dark()
+  require('solarized-osaka').setup {}
+  vim.cmd.colorscheme 'solarized-osaka'
+end
+
 -- setup_midnight()
-setup_material()
+-- setup_material()
+setup_solarized_dark()

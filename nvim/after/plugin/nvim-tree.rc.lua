@@ -51,6 +51,12 @@ nvim_tree.setup {
       -- return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
     end,
   },
+  -- Enable this will open nvim-tree when we open in directory, e.g. `nvim .`
+  -- Since we try to restore session now, we don't need this.
+  hijack_directories = {
+    enable = false,
+    auto_open = false,
+  },
 }
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })

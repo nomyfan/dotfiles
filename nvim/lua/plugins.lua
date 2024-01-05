@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   --}
   use 'marko-cerovac/material.nvim'
   use 'dasupradyumna/midnight.nvim'
+  use 'craftzdog/solarized-osaka.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
 
@@ -74,4 +75,5 @@ return require('packer').startup(function(use)
     "lukas-reineke/indent-blankline.nvim",
     requires = { "nvim-treesitter/nvim-treesitter" }
   }
+  use { 'Shatur/neovim-session-manager', requires = 'nvim-lua/plenary.nvim' }
 end)

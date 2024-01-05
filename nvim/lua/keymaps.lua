@@ -80,3 +80,46 @@ map({ "t" }, "<Esc>", "<C-\\><C-n>", { silent = true })
 map("n", "<Tab>", ":bnext<CR>", { silent = true })
 map("n", "<S-Tab>", ":bprev<CR>", { silent = true })
 
+-- Save current session and exit nvim.
+vim.api.nvim_create_user_command("X", function()
+  local i = 0
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_get_option_value("modified", { buf = buf }) then
+        return
+      end
+  end
+  require('session_manager').save_current_session()
+  vim.cmd("qa")
+end, {})
+
+-- Load session for current directory.
+vim.api.nvim_create_user_command("L", function()
+  require('session_manager').load_current_dir_session()
+end, {})
+
+function string.starts_with(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function(data)
+  local is_directory = vim.fn.isdirectory(data.file) == 1
+  if is_directory then
+    vim.cmd.cd(data.file)
+  end
+
+  local argc = vim.fn.argc()
+  if argc == 1 and is_directory then
+    -- Partially copy from session_manager.load_current_dir_session
+    local cwd = vim.fn.getcwd()
+    if cwd then
+      local session = require('session_manager.config').dir_to_session_filename(cwd)
+      if session:exists() then
+        require('session_manager').load_current_dir_session()
+        return
+      end
+    end
+
+    -- Fallback
+    require("nvim-tree.api").tree.open()
+  end
+end})

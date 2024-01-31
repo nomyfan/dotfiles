@@ -92,6 +92,11 @@ vim.api.nvim_create_user_command("X", function()
   vim.cmd("qa")
 end, {})
 
+-- Save current session.
+vim.api.nvim_create_user_command("S", function()
+  require('session_manager').save_current_session()
+end, {})
+
 -- Load session for current directory.
 vim.api.nvim_create_user_command("L", function()
   require('session_manager').load_current_dir_session()
@@ -123,3 +128,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function(data)
     require("nvim-tree.api").tree.open()
   end
 end})
+
+-- List buffers with Telescope
+vim.api.nvim_create_user_command("B", function()
+  require('telescope.builtin').buffers()
+end, {})

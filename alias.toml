@@ -47,3 +47,6 @@ powershell = "node (Join-Path $HOME -ChildPath .ss -AdditionalChildPath JavaScri
 zsh = "rm -rf"
 powershell = "Remove-Item -Recurse -Force"
 
+[aliases.cwd]
+zsh = "if [[ $(uname) == 'Darwin' ]]; then pwd | pbcopy; else pwd | xclip; fi" # Tested on macOS only
+powershell = "Get-Location | Set-Clipboard"

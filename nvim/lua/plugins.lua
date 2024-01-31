@@ -76,4 +76,5 @@ return require('packer').startup(function(use)
     requires = { "nvim-treesitter/nvim-treesitter" }
   }
   use { 'Shatur/neovim-session-manager', requires = 'nvim-lua/plenary.nvim' }
+  use "folke/zen-mode.nvim"
 end)

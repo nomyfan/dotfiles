@@ -77,4 +77,8 @@ return require('packer').startup(function(use)
   }
   use { 'Shatur/neovim-session-manager', requires = 'nvim-lua/plenary.nvim' }
   use "folke/zen-mode.nvim"
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
 end)

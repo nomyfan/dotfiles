@@ -130,6 +130,16 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function(data)
 end})
 
 -- List buffers with Telescope
-vim.api.nvim_create_user_command("B", function()
+nmap('<leader>b', function()
   require('telescope.builtin').buffers()
-end, {})
+end)
+
+map('n', '<leader>;', function()
+  local gitlinker = require("gitlinker")
+  gitlinker.get_buf_range_url("n", { action_callback = gitlinker.actions.open_in_browser })
+end, { silent = true })
+
+map('v', '<leader>;', function()
+  local gitlinker = require("gitlinker")
+  gitlinker.get_buf_range_url("n", { action_callback = gitlinker.actions.open_in_browser })
+end, { silent = true })

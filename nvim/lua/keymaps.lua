@@ -134,6 +134,17 @@ nmap('<leader>b', function()
   require('telescope.builtin').buffers()
 end)
 
+-- Close all buffers but current one
+vim.api.nvim_create_user_command("Bud", function()
+  local bufs = vim.api.nvim_list_bufs()
+  local current_buf = vim.api.nvim_get_current_buf()
+  for _, i in ipairs(bufs) do
+    if i ~= current_buf then
+        vim.api.nvim_buf_delete(i, {})
+    end
+  end
+end, {})
+
 map('n', '<leader>;', function()
   local gitlinker = require("gitlinker")
   gitlinker.get_buf_range_url("n", { action_callback = gitlinker.actions.open_in_browser })

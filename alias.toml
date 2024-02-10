@@ -31,6 +31,7 @@ batp = "bat -p"
 gds = "git diff --staged"
 grmc = "git rm -r --cached"
 gsn = "git show --name-only"
+'gc.' = "git commit -m ."
 # cargo
 cb = "cargo build"
 cr = "cargo run"

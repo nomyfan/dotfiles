@@ -11,3 +11,11 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(als init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# Rust
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+
+#
+export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/lib"
+

@@ -21,5 +21,8 @@
     starship
     xz
     _7zz
+    tmux
+    gh
+    zig
   ;
 }

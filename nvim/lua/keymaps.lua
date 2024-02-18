@@ -135,7 +135,7 @@ nmap('<leader>b', function()
 end)
 
 -- Close all buffers but current one
-vim.api.nvim_create_user_command("Bud", function()
+vim.api.nvim_create_user_command("Bd", function()
   local bufs = vim.api.nvim_list_bufs()
   local current_buf = vim.api.nvim_get_current_buf()
   for _, i in ipairs(bufs) do

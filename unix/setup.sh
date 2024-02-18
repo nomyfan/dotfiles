@@ -12,4 +12,7 @@ mkdir -p ~/.config/atuin
 rm ~/.config/atuin/config.toml 2>>/dev/null || 1
 ln -sf $__dirname/../atuin.toml ~/.config/atuin/config.toml
 
-ln -sf $__dirname/.zshrc ~/.zshrc
+rm ~/.tmux.conf 2>>/dev/null || 1
+ln -sf $__dirname/tmux.conf ~/.tmux.conf
+
+ln -sf $__dirname/zshrc ~/.zshrc

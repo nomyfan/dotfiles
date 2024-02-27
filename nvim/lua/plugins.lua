@@ -37,14 +37,20 @@ return require('packer').startup(function(use)
   use 'akinsho/nvim-bufferline.lua'
 
   use {
-      'nvim-treesitter/nvim-treesitter',
-      run = function()
-          local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-          ts_update()
-      end,
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+    end,
   }
-  use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
+  use {
+   'windwp/nvim-autopairs',
+    requires = { 'nvim-treesitter/nvim-treesitter' }
+  }
+  use {
+   'windwp/nvim-ts-autotag',
+   requires = { 'nvim-treesitter/nvim-treesitter' }
+  }
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-tree/nvim-tree.lua'
   use {

@@ -1,3 +1,6 @@
+local ok, ts = pcall(require, "nvim-treesitter.configs")
+if not ok then return end
+
 if require('shared').is_win() then
   require("nvim-treesitter.install").compilers = { "zig" }
 end

@@ -5,5 +5,5 @@ gl.setup {
   opts = {
     print_url = false,
   },
-  mappings = nil,
+  mappings = "",
 }

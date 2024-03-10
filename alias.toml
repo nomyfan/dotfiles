@@ -32,6 +32,7 @@ gds = "git diff --staged"
 grmc = "git rm -r --cached"
 gsn = "git show --name-only"
 'gc.' = "git commit -m ."
+gcls = "git clone --depth 1" # shallow git clone
 # cargo
 cb = "cargo build"
 cr = "cargo run"

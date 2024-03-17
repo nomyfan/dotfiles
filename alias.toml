@@ -26,7 +26,8 @@ lt = "eza -T"
 # create-x
 cvite = "create-x --url https://github.com/nomyfan/templates/tree/main/vite-react-ts --name"
 # bat
-batp = "bat -p"
+b = "bat"
+bp = "bat -p"
 # git
 gds = "git diff --staged"
 grmc = "git rm -r --cached"
@@ -34,21 +35,26 @@ gsn = "git show --name-only"
 'gc.' = "git commit -m ."
 gcls = "git clone --depth 1" # shallow git clone
 # cargo
+c = "cargo"
 cb = "cargo build"
+cbc = "cargo bench"
 cr = "cargo run"
 ct = "cargo test"
 cl = "cargo clippy"
+ci = "cargo install"
+cbi = "cargo binstall"
+ccr = "cargo criterion"
 
 [aliases.cls]
 zsh = "clear"
 
 [aliases.opengh]
 zsh = "node $HOME/.ss/JavaScript/opengh.mjs"
-powershell = "node (Join-Path $HOME -ChildPath .ss -AdditionalChildPath JavaScript,opengh.mjs)"
+powershell = "node (Join-Path $HOME .ss JavaScript opengh.mjs)"
 
 [aliases.ghu]
 zsh = "node $HOME/.ss/JavaScript/ghu.mjs"
-powershell = "node (Join-Path $HOME -ChildPath .ss -AdditionalChildPath JavaScript,ghu.mjs)"
+powershell = "node (Join-Path $HOME .ss JavaScript ghu.mjs)"
 
 [aliases.rmrf]
 zsh = "rm -rf"

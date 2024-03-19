@@ -152,5 +152,5 @@ end, { silent = true })
 
 map('v', '<leader>;', function()
   local gitlinker = require("gitlinker")
-  gitlinker.get_buf_range_url("n", { action_callback = gitlinker.actions.open_in_browser })
+  gitlinker.get_buf_range_url("v", { action_callback = gitlinker.actions.open_in_browser })
 end, { silent = true })

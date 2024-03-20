@@ -38,6 +38,12 @@ nvim_lsp.tailwindcss.setup {
   capabilities = capabilities
 }
 
+-- ESLint
+nvim_lsp.eslint.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 -- Rust
 local has_rust_tools, rust_tools = pcall(require, 'rust-tools')
 if has_rust_tools then

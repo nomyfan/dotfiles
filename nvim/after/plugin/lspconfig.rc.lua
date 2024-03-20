@@ -84,6 +84,13 @@ nvim_lsp.clangd.setup {
   capabilities = capabilities
 }
 
+-- PowerShell
+nvim_lsp.powershell_es.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  bundle_path = os.getenv("LSP_POWERSHELL_PATH")
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,

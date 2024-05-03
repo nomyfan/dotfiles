@@ -24,5 +24,8 @@
     tmux
     gh
     zig
+    cmake
+    pkg-config
+    libllvm
   ;
 }

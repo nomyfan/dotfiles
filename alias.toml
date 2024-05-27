@@ -10,11 +10,13 @@ pnpx = "corepack pnpx"
 y = "yarn"
 yi = "yarn install"
 ya = "yarn add"
+yad = "yarn add -D"
 yb = "yarn build"
 # pnpm
 p = "pnpm"
 pi = "pnpm install"
 pa = "pnpm add"
+pad = "pnpm add -D"
 pb = "pnpm build"
 # nvim
 vim = "nvim"

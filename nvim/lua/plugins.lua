@@ -23,7 +23,10 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'onsails/lspkind-nvim'
-  use 'simrat39/rust-tools.nvim'
+  use {
+    'mrcjkb/rustaceanvim',
+    tag = '4.22.10',
+  }
 
   -- cmp
   use 'hrsh7th/cmp-buffer'

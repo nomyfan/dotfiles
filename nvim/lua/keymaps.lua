@@ -133,6 +133,9 @@ end})
 nmap('<leader>b', function()
   require('telescope.builtin').buffers()
 end)
+nmap('<leader>r', function()
+  require('telescope.builtin').resume()
+end)
 
 -- Close all buffers but current one
 vim.api.nvim_create_user_command("Bd", function()

@@ -35,4 +35,15 @@ function M.nvim_create_augroups(definitions)
   end
 end
 
+function M.with_module(module, callback)
+  local ok, mod = pcall(require, module)
+  if ok then
+    callback(mod)
+  end
+end
+
+function M.starts_with(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
 return M

@@ -42,11 +42,11 @@ return {
       init_options = {
         preferences = {
           includeInlayParameterNameHints = 'all',
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
           includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHints = false,
           includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = false,
           includeInlayEnumMemberValueHints = true,
           importModuleSpecifierPreference = 'non-relative',
         },
@@ -62,7 +62,8 @@ return {
     -- Tailwind CSS
     lsp.tailwindcss.setup {
       on_attach = on_attach,
-      capabilities = capabilities
+      capabilities = capabilities,
+      root_dir = lsp.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'tailwind.js', 'tailwind.ts', 'tailwind.config.cjs', 'tailwind.config.mjs', 'tailwind.config.js')
     }
 
     -- ESLint

@@ -1,5 +1,5 @@
 return {
-  { 'kyazdani42/nvim-web-devicons',
+  { 'nvim-tree/nvim-web-devicons',
     opts = {
       default = true
     }
@@ -13,10 +13,12 @@ return {
     end
   },
   { 'norcalli/nvim-colorizer.lua',
-    config = true
+    config = function()
+      require('colorizer').setup()
+    end
   },
-  { 'akinsho/nvim-bufferline.lua',
-    config = true
+  { 'akinsho/bufferline.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
   { 'wakatime/vim-wakatime' },
   { 'github/copilot.vim' },
@@ -28,7 +30,9 @@ return {
     }
   },
   { 'windwp/nvim-ts-autotag',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    init = function()
+    end
   },
   { 'folke/zen-mode.nvim' },
   { 'numToStr/Comment.nvim',

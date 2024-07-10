@@ -46,6 +46,8 @@ cl = "cargo clippy"
 ci = "cargo install"
 cbi = "cargo binstall"
 ccr = "cargo criterion"
+# rg
+rgi = "rg -i"
 
 [aliases.cls]
 zsh = "clear"

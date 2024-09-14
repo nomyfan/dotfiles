@@ -46,9 +46,13 @@ rgi = "rg -i"
 [aliases.cls]
 zsh = "clear"
 
-[aliases.opengh]
-zsh = "node $HOME/.ss/JavaScript/opengh.mjs"
-powershell = "node (Join-Path $HOME .ss JavaScript opengh.mjs)"
+[aliases.opgh]
+zsh = "node $HOME/.ss/JavaScript/opx.mjs gh"
+powershell = "node (Join-Path $HOME .ss JavaScript opx.mjs gh)"
+
+[aliases.opn]
+zsh = "node $HOME/.ss/JavaScript/opx.mjs npm"
+powershell = "node (Join-Path $HOME .ss JavaScript opx.mjs npm)"
 
 [aliases.ghu]
 zsh = "node $HOME/.ss/JavaScript/ghu.mjs"

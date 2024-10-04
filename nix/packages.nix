@@ -27,5 +27,6 @@
     cmake
     pkg-config
     libllvm
+    imagemagick
   ;
 }

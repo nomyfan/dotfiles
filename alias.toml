@@ -69,3 +69,8 @@ powershell = "Get-Location | Set-Clipboard"
 [aliases.snm]
 zsh = "node $HOME/.ss/JavaScript/sync-npmmirror.mjs"
 powershell = "node (Join-Path $HOME .ss JavaScript sync-npmmirror.mjs)"
+
+[aliases.b64hex]
+zsh = "node $HOME/.ss/JavaScript/b64hex.mjs"
+powershell = "node (Join-Path $HOME .ss JavaScript b64hex.mjs)"
+# zsh = "base64 -d | hexdump -v -e '1/1 \\\"%02x\\\"'"

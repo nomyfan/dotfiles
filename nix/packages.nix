@@ -28,5 +28,6 @@
     pkg-config
     libllvm
     imagemagick
+    zstd
   ;
 }

@@ -35,3 +35,6 @@ export WASMER_DIR="$HOME/.wasmer"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# corepack
+export COREPACK_NPM_REGISTRY=https://registry.npmmirror.com

@@ -29,5 +29,6 @@
     libllvm
     imagemagick
     zstd
+    pstree
   ;
 }

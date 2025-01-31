@@ -1,4 +1,4 @@
-# 30.3.2
+# 32.4.0
 [buildPlans.iosevka]
 family = "Iosevka"
 spacing = "fontconfig-mono"
@@ -7,20 +7,27 @@ noCvSs = true
 exportGlyphNames = false
 
 [buildPlans.iosevka.variants.design]
-f = "serifless-crossbar-at-x-height"
+six = "straight-bar"
+eight = "crossing-asymmetric"
+nine = "straight-bar"
+zero = "tall-slashed"
+f = "serifless"
 g = "double-storey"
 t = "bent-hook-short-neck"
 y = "straight-turn-serifless"
-eight = "crossing"
 paren = "flat-arc"
 brace = "curly-flat-boundary"
 number-sign = "slanted"
 ampersand = "upper-open"
+at = "threefold-tall"
 dollar = "open-cap"
 percent = "rings-continuous-slash-also-connected"
 bar = "force-upright"
 question = "corner"
+lig-ltgteq = "flat"
 lig-neq = "slightly-slanted-dotted"
+lig-equal-chain = "with-notch"
+lig-hyphen-chain = "with-notch"
 lig-plus-chain = "with-notch"
 lig-double-arrow-bar = "with-notch"
 lig-single-arrow-bar = "with-notch"
@@ -29,6 +36,11 @@ lig-single-arrow-bar = "with-notch"
 shape = 500
 menu = 5
 css = "normal"
+
+[buildPlans.iosevka.widths.SemiExtended]
+shape = 548
+menu = 6
+css = "semi-expanded"
 
 [buildPlans.iosevka.slopes.Upright]
 angle = 0

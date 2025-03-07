@@ -38,3 +38,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # corepack
 export COREPACK_NPM_REGISTRY=https://registry.npmmirror.com
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"

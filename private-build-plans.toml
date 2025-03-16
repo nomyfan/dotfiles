@@ -26,11 +26,6 @@ shape = 500
 menu = 5
 css = "normal"
 
-[buildPlans.iosevka.widths.Extended]
-shape = 600
-menu = 7
-css = "expanded"
-
 [buildPlans.iosevka.widths.SemiExtended]
 shape = 548
 menu = 6

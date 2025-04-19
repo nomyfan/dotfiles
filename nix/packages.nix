@@ -30,5 +30,6 @@
     imagemagick
     zstd
     pstree
+    ast-grep
   ;
 }

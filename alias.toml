@@ -12,8 +12,6 @@ pa = "pnpm add"
 pad = "pnpm add -D"
 pb = "pnpm build"
 px = "pnpm exec"
-# nvim
-vim = "nvim"
 # eza
 ls = "eza"
 l = "eza -al"

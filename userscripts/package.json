@@ -1,0 +1,15 @@
+{
+  "name": "userscripts",
+  "type": "module",
+  "scripts": {
+    "build": "tsx build.ts"
+  },
+  "packageManager": "pnpm@10.13.0",
+  "devDependencies": {
+    "@types/node": "^20.19.23",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vite-plugin-monkey": "^7.1.4"
+  }
+}

@@ -1,4 +1,16 @@
+const globalStyleID = "gh-quick-actions-style";
 function main() {
+  if (!document.getElementById(globalStyleID)) {
+    const globalStyleEle = document.createElement("style");
+    globalStyleEle.id = globalStyleID;
+    globalStyleEle.textContent = `
+      #repository-details-container {
+        max-width: unset !important;
+      }
+    `;
+    document.head.appendChild(globalStyleEle);
+  }
+
   const url = new URL(location.href);
   const components = url.pathname.split("/").filter(Boolean);
   if (

@@ -1,17 +1,19 @@
 const buttonID = "unsplash-fullscreen-button";
 function main() {
-  if (
-    !document.querySelector('[data-testid="client-side-hydration-complete"]') ||
-    !window.location.pathname.startsWith("/photos/")
-  ) {
+  if (!window.location.pathname.startsWith("/photos/")) {
     return;
   }
 
   for (const route of document.querySelectorAll(
     '[data-testid="photos-route"]'
   )) {
-    const headerElement = route.querySelector("div:first-child>header");
-    if (!headerElement || route.querySelector(`[data-test="${buttonID}"]`)) {
+    const actionsBar = route.querySelector(
+      "div[class^=photographer-] + div[class^=actions-]"
+    );
+    console.log("actionsBar", actionsBar);
+    if (!actionsBar) return;
+
+    if (!actionsBar || route.querySelector(`[data-test="${buttonID}"]`)) {
       return;
     }
 
@@ -67,7 +69,7 @@ function main() {
     rootElement.appendChild(style);
     rootElement.appendChild(button);
 
-    headerElement.lastElementChild?.append(rootElement);
+    actionsBar.appendChild(rootElement);
   }
 }
 

@@ -44,7 +44,7 @@ if (names.length === 0) {
   names = Object.keys(userscripts);
 }
 
-await fs.rmdir("./dist", { recursive: true });
+await fs.rm("./dist", { recursive: true, force: true });
 for (const name of names) {
   await build(name).catch((err) => {
     console.error(err);

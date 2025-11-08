@@ -3,19 +3,24 @@ import * as vite from "vite";
 import monkey from "vite-plugin-monkey";
 import type { MonkeyUserScript } from "vite-plugin-monkey";
 
+const files = await fs.readdir("./src");
+const metaFiles = files.filter((f) => f.endsWith(".meta.ts"));
+
 const userscripts: Record<
   string,
   { entry: string; meta: () => Promise<{ meta: MonkeyUserScript }> }
-> = {
-  "unsplash-fullscreen": {
-    entry: "src/unsplash-fullscreen.ts",
-    meta: () => import("./src/unsplash-fullscreen.meta"),
-  },
-  "codeblock-font": {
-    entry: "src/codeblock-font.ts",
-    meta: () => import("./src/codeblock-font.meta"),
-  },
-};
+> = Object.fromEntries(
+  metaFiles.map((file) => {
+    const name = file.replace(".meta.ts", "");
+    return [
+      name,
+      {
+        entry: `src/${name}.ts`,
+        meta: () => import(`./src/${name}.meta`),
+      },
+    ];
+  })
+);
 
 async function build(name: string) {
   const userscript = userscripts[name];

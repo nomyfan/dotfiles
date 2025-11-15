@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
   return {
     plugins: [
       monkey({
-        entry: "src/main.ts",
+        entry: "dev.ts",
         userscript: meta,
       }),
     ],

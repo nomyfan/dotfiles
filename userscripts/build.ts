@@ -28,6 +28,7 @@ async function build(name: string) {
     throw new Error(`Unknown userscript: ${name}`);
   }
   await vite.build({
+    configFile: false,
     plugins: [
       monkey({
         entry: userscript.entry,

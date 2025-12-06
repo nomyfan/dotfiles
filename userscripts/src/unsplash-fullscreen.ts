@@ -77,3 +77,5 @@ main();
 setInterval(() => {
   main();
 }, 500);
+
+export {};

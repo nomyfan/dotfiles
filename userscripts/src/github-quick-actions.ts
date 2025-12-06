@@ -89,3 +89,5 @@ main();
 setInterval(() => {
   main();
 }, 1000);
+
+export {};

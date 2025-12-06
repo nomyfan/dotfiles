@@ -1,0 +1,7 @@
+font-family = "Berkeley Mono"
+font-family = "BlexMono Nerd Font Mono"
+font-size = 14
+theme = "Atom"
+
+keybind = super+right=next_tab
+keybind = super+left=previous_tab

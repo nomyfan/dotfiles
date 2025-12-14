@@ -48,3 +48,28 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
+
+diffs() {
+  if (( $# != 2 )); then
+    print -u2 'Usage: diffs <a> <b>'
+    return 2
+  fi
+
+  local a="$1" b="$2"
+  local -a args
+  args=(git diff --no-index --word-diff --word-diff-regex='.' --)
+
+  if [[ -f "$a" ]]; then
+    if [[ -f "$b" ]]; then
+      "${args[@]}" "$a" "$b"
+    else
+      "${args[@]}" "$a" <(printf "%s\n" "$b")
+    fi
+  else
+    if [[ -f "$b" ]]; then
+      "${args[@]}" <(printf "%s\n" "$a") "$b"
+    else
+      "${args[@]}" <(printf "%s\n" "$a") <(printf "%s\n" "$b")
+    fi
+  fi
+}

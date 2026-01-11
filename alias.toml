@@ -40,6 +40,9 @@ cbi = "cargo binstall"
 ccr = "cargo criterion"
 # rg
 rgi = "rg -i"
+# misc
+up-codex = "npm i -g @openai/codex"
+up-cc = "npm i -g @anthropic-ai/claude-code"
 
 [aliases.cls]
 zsh = "clear"
@@ -72,3 +75,4 @@ powershell = "node (Join-Path $HOME .ss JavaScript sync-npmmirror.mjs)"
 zsh = "node $HOME/.ss/JavaScript/b64hex.mjs"
 powershell = "node (Join-Path $HOME .ss JavaScript b64hex.mjs)"
 # zsh = "base64 -d | hexdump -v -e '1/1 \\\"%02x\\\"'"
+

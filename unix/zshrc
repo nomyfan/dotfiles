@@ -75,5 +75,5 @@ diffs() {
 }
 
 # ESP32
-[ -s "$HOME/export-esp.sh"] && source "$HOME/export-esp.sh"
+[ -s "$HOME/export-esp.sh" ] && source "$HOME/export-esp.sh"
 # END ESP32

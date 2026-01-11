@@ -73,3 +73,7 @@ diffs() {
     fi
   fi
 }
+
+# ESP32
+[ -s "$HOME/export-esp.sh"] && source "$HOME/export-esp.sh"
+# END ESP32

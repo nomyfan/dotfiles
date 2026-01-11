@@ -4,6 +4,7 @@ use regex::Regex;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
+use std::env;
 use std::fs;
 use std::io::{self, Write as IoWrite};
 use std::path::Path;
@@ -55,12 +56,6 @@ enum SkillsError {
 
     #[error("Failed to parse skills.toml\n\nReason: {0}\nPlease check the config file format.")]
     ConfigParseError(String),
-}
-
-impl From<reqwest::Error> for SkillsError {
-    fn from(err: reqwest::Error) -> Self {
-        SkillsError::NetworkError(err.to_string())
-    }
 }
 
 #[derive(Debug, Default, Serialize, Deserialize)]
@@ -138,15 +133,10 @@ struct GitHubUrl {
 
 impl GitHubUrl {
     fn tarball_url(&self) -> String {
-        let base = format!(
-            "https://api.github.com/repos/{}/{}/tarball",
-            self.owner, self.repo
-        );
-        let mut url = reqwest::Url::parse(&base).expect("valid GitHub API base URL");
-        url.path_segments_mut()
-            .expect("base URL is not relative")
-            .push(&self.rev);
-        url.to_string()
+        format!(
+            "https://api.github.com/repos/{}/{}/tarball/{}",
+            self.owner, self.repo, self.rev
+        )
     }
 }
 
@@ -194,32 +184,62 @@ fn calculate_checksum(dir: &Path) -> Result<String, io::Error> {
     Ok(format!("sha256:{:x}", hasher.finalize()))
 }
 
-fn download_and_extract(github_url: &GitHubUrl, dest_dir: &Path) -> Result<(), SkillsError> {
-    let client = reqwest::blocking::Client::builder()
-        .timeout(std::time::Duration::from_secs(30))
-        .build()?;
-
-    let response = client
-        .get(&github_url.tarball_url())
-        .header("User-Agent", "skills-cli")
-        .header("Accept", "application/vnd.github+json")
-        .send()?;
-
-    if !response.status().is_success() {
-        let status = response.status().as_u16();
-        let url = github_url.tarball_url();
-        return Err(match status {
-            404 => SkillsError::NotFound { url },
-            403 => SkillsError::Forbidden,
-            429 => SkillsError::RateLimited,
-            _ => SkillsError::HttpError {
-                status,
-                message: url,
-            },
-        });
+fn proxy_from_env() -> Option<String> {
+    for key in [
+        "HTTPS_PROXY",
+        "https_proxy",
+        "ALL_PROXY",
+        "all_proxy",
+        "HTTP_PROXY",
+        "http_proxy",
+    ] {
+        if let Ok(value) = env::var(key) {
+            let trimmed = value.trim();
+            if !trimmed.is_empty() {
+                return Some(trimmed.to_string());
+            }
+        }
     }
+    None
+}
 
-    let decoder = GzDecoder::new(response);
+fn build_agent() -> Result<ureq::Agent, SkillsError> {
+    if let Some(proxy_url) = proxy_from_env() {
+        let proxy =
+            ureq::Proxy::new(proxy_url).map_err(|e| SkillsError::NetworkError(e.to_string()))?;
+        Ok(ureq::AgentBuilder::new().proxy(proxy).build())
+    } else {
+        Ok(ureq::Agent::new())
+    }
+}
+
+fn download_and_extract(github_url: &GitHubUrl, dest_dir: &Path) -> Result<(), SkillsError> {
+    let agent = build_agent()?;
+    let url = github_url.tarball_url();
+    let response = match agent
+        .get(&url)
+        .set("User-Agent", "skills-cli")
+        .set("Accept", "application/vnd.github+json")
+        .call()
+    {
+        Ok(response) => response,
+        Err(ureq::Error::Status(status, _)) => {
+            return Err(match status {
+                404 => SkillsError::NotFound { url },
+                403 => SkillsError::Forbidden,
+                429 => SkillsError::RateLimited,
+                _ => SkillsError::HttpError {
+                    status,
+                    message: url,
+                },
+            })
+        }
+        Err(ureq::Error::Transport(err)) => {
+            return Err(SkillsError::NetworkError(err.to_string()))
+        }
+    };
+
+    let decoder = GzDecoder::new(response.into_reader());
     let mut archive = Archive::new(decoder);
 
     let mut found_any = false;

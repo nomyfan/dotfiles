@@ -3,7 +3,7 @@ use flate2::read::GzDecoder;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::env;
 use std::fs;
 use std::io::{self, Write as IoWrite};
@@ -372,12 +372,39 @@ fn sync_skills(dry_run: bool) -> Result<(), SkillsError> {
     let config_path = Path::new("skills.toml");
     let mut config = load_config(config_path)?;
 
+    let skills_dir = Path::new("./skills");
+    let configured: HashSet<String> = config.skills.keys().cloned().collect();
+
+    if skills_dir.exists() {
+        for entry in fs::read_dir(skills_dir)? {
+            let entry = entry?;
+            let path = entry.path();
+            if !path.is_dir() {
+                continue;
+            }
+
+            let Some(name) = path.file_name().and_then(|s| s.to_str()) else {
+                continue;
+            };
+
+            if name.starts_with('.') {
+                continue;
+            }
+
+            if !configured.contains(name) {
+                if dry_run {
+                    println!("[{}] Would remove (not in skills.toml)", name);
+                } else {
+                    fs::remove_dir_all(&path)?;
+                }
+            }
+        }
+    }
+
     if config.skills.is_empty() {
         println!("No skills configured in skills.toml");
         return Ok(());
     }
-
-    let skills_dir = Path::new("./skills");
 
     let skill_names: Vec<String> = config.skills.keys().cloned().collect();
 

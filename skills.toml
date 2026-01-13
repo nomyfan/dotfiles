@@ -1,3 +1,13 @@
 [skills.mcp-skill-creator]
 source_url = "https://github.com/nomyfan/dotfiles/tree/c4ce38c52f8f569dc4f7e475672a804fae4a44f1/skillx/mcp-skill-creator"
+slug = "nomyfan/dotfiles"
+path = "skillx/mcp-skill-creator"
+sha = "c4ce38c52f8f569dc4f7e475672a804fae4a44f1"
 checksum = "sha256:bff261da84534a4268904a5335cb0492672606cc703d55e67c8d96fc96423d7d"
+
+[skills.skill-creator]
+source_url = "https://github.com/anthropics/skills/tree/69c0b1a0674149f27b61b2635f935524b6add202/skills/skill-creator"
+slug = "anthropics/skills"
+path = "skills/skill-creator"
+sha = "ef740771ac901e03fbca3ce4e1c453a96010f30a"
+checksum = "sha256:983170c54ebd674cfd33cc0d3269e0cc2ec36163abfb0d292e36e4dfec9ff9cc"

@@ -31,4 +31,3 @@ The project uses Cargo's `[[bin]]` configuration to define multiple independent 
 
 - `src/open.rs` - Cross-platform file/URL opener
 - `src/which.rs` - Command locator with PowerShell support
-- `src/skills.rs` - Claude Code skills package manager

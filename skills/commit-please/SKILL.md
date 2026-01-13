@@ -1,9 +1,9 @@
 ---
-name: git-commit
+name: commit-please
 description: Intelligent git commit assistant that analyzes staged and unstaged changes in the current working directory, generates commit messages following Conventional Commits specification (conventionalcommits.org), and executes commits after user approval. Use when the user asks to create a commit, wants help writing a commit message, or says "commit these changes" or similar requests.
 ---
 
-# Git Commit
+# Commit Please
 
 ## Overview
 

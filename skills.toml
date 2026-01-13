@@ -1,3 +1,10 @@
+[skills.git-commit]
+source_url = "https://github.com/nomyfan/dotfiles/tree/f23e55afd8426fedb5e2ca81fa8a63dad1f2accc/skillx/git-commit"
+slug = "nomyfan/dotfiles"
+path = "skillx/git-commit"
+sha = "f23e55afd8426fedb5e2ca81fa8a63dad1f2accc"
+checksum = "sha256:0162a79717b399b2aad78c95dbde290836ac887dadfb892ea684ba612370f374"
+
 [skills.mcp-skill-creator]
 source_url = "https://github.com/nomyfan/dotfiles/tree/c4ce38c52f8f569dc4f7e475672a804fae4a44f1/skillx/mcp-skill-creator"
 slug = "nomyfan/dotfiles"

@@ -1,9 +1,9 @@
 [skills.commit-please]
-source_url = "https://github.com/nomyfan/dotfiles/tree/5da1762e4d4382b2b8b301e6ef0069f949344100/skills/commit-please"
+source_url = "https://github.com/nomyfan/dotfiles/tree/af4ec7fae5804e79d3409b2c25f4765f52907616/skills/commit-please"
 slug = "nomyfan/dotfiles"
 path = "skills/commit-please"
-sha = "5da1762e4d4382b2b8b301e6ef0069f949344100"
-checksum = "sha256:0162a79717b399b2aad78c95dbde290836ac887dadfb892ea684ba612370f374"
+sha = "af4ec7fae5804e79d3409b2c25f4765f52907616"
+checksum = "sha256:a44048340d54f5e44425d241c225a1f1213706addfb4c3a61e2c16e41e9b0ba5"
 
 [skills.mcp-skill-creator]
 source_url = "https://github.com/nomyfan/dotfiles/tree/5da1762e4d4382b2b8b301e6ef0069f949344100/skills/mcp-skill-creator"

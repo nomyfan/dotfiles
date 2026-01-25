@@ -9,48 +9,47 @@ return {
       local shared = require('shared')
       local nmap = shared.nmap
       local map = shared.map
-      nmap("]e", function()
+      nmap(']e', function()
         vim.diagnostic.jump({ count = 1 })
       end)
 
-      nmap("[e", function()
+      nmap('[e', function()
         vim.diagnostic.jump({ count = -1 })
       end)
-      nmap("]E", function()
+      nmap(']E', function()
         vim.diagnostic.jump({
           severity = vim.diagnostic.severity.ERROR,
           count = 1,
         })
       end)
 
-      nmap("[E", function()
+      nmap('[E', function()
         vim.diagnostic.jump({
           severity = vim.diagnostic.severity.ERROR,
           count = -1,
         })
       end)
 
-      nmap("K", vim.lsp.buf.hover)
-      nmap("gd", vim.lsp.buf.definition)
+      nmap('K', vim.lsp.buf.hover)
+      nmap('gd', vim.lsp.buf.definition)
       nmap('grr', vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
       nmap('gri', vim.lsp.buf.implementation)
       nmap('grn', vim.lsp.buf.rename)
       nmap('grt', vim.lsp.buf.type_definition)
 
-      map({ "n", "v" }, "<Leader>ca", function()
-        require("tiny-code-action").code_action()
+      map({ 'n', 'v' }, '<Leader>ca', function()
+        require('tiny-code-action').code_action()
       end, {})
 
       if client.supports_method('textDocument/inlayHint') or client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end
-      nmap("<Leader>F", vim.lsp.buf.format, { silent = true })
+      nmap('<Leader>F', vim.lsp.buf.format, { silent = true })
       -- Format on save
       vim.api.nvim_create_user_command('W', function()
         vim.cmd('lua vim.lsp.buf.format()')
         vim.cmd('w')
-      end ,{})
-
+      end, {})
     end
 
     -- Lua
@@ -66,7 +65,7 @@ return {
             globals = { 'vim' },
           },
           workspace = {
-            library = vim.api.nvim_get_runtime_file("", true),
+            library = vim.api.nvim_get_runtime_file('', true),
             checkThirdParty = false,
           }
         }
@@ -110,13 +109,13 @@ return {
     })
     vim.lsp.enable('rust_analyzer')
 
-    vim.diagnostic.config {
+    vim.diagnostic.config({
       signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = "",
-          [vim.diagnostic.severity.WARN]  = "",
-          [vim.diagnostic.severity.HINT]  = "",
-          [vim.diagnostic.severity.INFO]  = "",
+          [vim.diagnostic.severity.ERROR] = '',
+          [vim.diagnostic.severity.WARN]  = '',
+          [vim.diagnostic.severity.HINT]  = '',
+          [vim.diagnostic.severity.INFO]  = '',
         }
       },
       virtual_text = {
@@ -124,8 +123,13 @@ return {
       },
       update_in_insert = true,
       float = {
+        border = 'rounded',
         source = 'if_many',
+        max_width = 88,
       },
-    }
+    })
+    vim.keymap.set("n", "<leader>e", function()
+      vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+    end, { desc = "Line diagnostics" })
   end
 }

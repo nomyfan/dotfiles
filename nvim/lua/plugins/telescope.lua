@@ -13,5 +13,6 @@ return {
     nmap('<leader>fg', builtin.live_grep)
     nmap('<leader>fb', builtin.buffers)
     nmap('<leader>fr', builtin.resume)
+    nmap('<leader>fd', builtin.diagnostics)
   end
 }

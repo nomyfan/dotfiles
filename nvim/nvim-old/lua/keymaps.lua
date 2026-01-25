@@ -29,29 +29,18 @@ nmap('<Leader><Right>', ':vertical res +10<CR>')
 nmap('<Leader><Up>', ':res +10<CR>')
 nmap('<Leader><Down>', ':res -10<CR>')
 
--- Buffer navigation
-nmap('<Tab>', ':bnext<CR>', { silent = true })
-nmap('<S-Tab>', ':bprev<CR>', { silent = true })
+-- Close all buffers but current one
+vim.api.nvim_create_user_command('Bd', function()
+  local bufs = vim.api.nvim_list_bufs()
+  local current_buf = vim.api.nvim_get_current_buf()
+  for _, i in ipairs(bufs) do
+    if i ~= current_buf then
+        vim.api.nvim_buf_delete(i, {})
+    end
+  end
+end, {})
 
--- Sessions
-local function session_name_path_hash()
-  local cwd = vim.fn.getcwd()
-  local base = vim.fn.fnamemodify(cwd, ':t')
-  local hash = vim.fn.sha256(cwd):sub(1, 8)
-  return string.format('%s-%s', base, hash)
-end
+-- Switch buffer
+map('n', '<Tab>', ':bnext<CR>', { silent = true })
+map('n', '<S-Tab>', ':bprev<CR>', { silent = true })
 
-nmap('<Leader>sw', function()
-  local session_name = session_name_path_hash()
-  require('mini.sessions').write(session_name)
-end)
-
-nmap('<Leader>sr', function()
-  local session_name = session_name_path_hash()
-  require('mini.sessions').read(session_name)
-end)
-
--- System clipboard
-map({'n', 'v'}, '<leader>y', '"+y')
-map({'n', 'v'}, '<leader>d', '"+d')
-map({'n', 'v'}, '<leader>p', '"+p')

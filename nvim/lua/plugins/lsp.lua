@@ -4,76 +4,96 @@ return {
     'hrsh7th/cmp-nvim-lsp'
   },
   config = function()
-    local protocol = require('vim.lsp.protocol')
-    local lsp = require('lspconfig')
-    local shared = require('shared')
-
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     local on_attach = function(client, bufnr)
+      local shared = require('shared')
       local nmap = shared.nmap
+      local map = shared.map
+      nmap(']e', function()
+        vim.diagnostic.jump({ count = 1 })
+      end)
+
+      nmap('[e', function()
+        vim.diagnostic.jump({ count = -1 })
+      end)
+      nmap(']E', function()
+        vim.diagnostic.jump({
+          severity = vim.diagnostic.severity.ERROR,
+          count = 1,
+        })
+      end)
+
+      nmap('[E', function()
+        vim.diagnostic.jump({
+          severity = vim.diagnostic.severity.ERROR,
+          count = -1,
+        })
+      end)
+
+      nmap('K', vim.lsp.buf.hover)
+      nmap('gd', vim.lsp.buf.definition)
+      nmap('grr', vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
+      nmap('gri', vim.lsp.buf.implementation)
+      nmap('grn', vim.lsp.buf.rename)
+      nmap('grt', vim.lsp.buf.type_definition)
+
+      map({ 'n', 'v' }, '<Leader>ca', function()
+        require('tiny-code-action').code_action()
+      end, {})
 
       if client.supports_method('textDocument/inlayHint') or client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end
-      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-      nmap("<Leader>F", ":lua vim.lsp.buf.format()<CR>", { silent = true })
+      nmap('<Leader>F', vim.lsp.buf.format, { silent = true })
       -- Format on save
       vim.api.nvim_create_user_command('W', function()
         vim.cmd('lua vim.lsp.buf.format()')
         vim.cmd('w')
-      end ,{})
-
-      nmap('gre', vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
+      end, {})
     end
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+    -- Lua
+    vim.lsp.config('lua_ls', {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        Lua = {
+          runtime = {
+            version = 'LuaJIT',
+          },
+          diagnostics = {
+            globals = { 'vim' },
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file('', true),
+            checkThirdParty = false,
+          }
+        }
+      }
+    })
+    vim.lsp.enable('lua_ls')
 
     -- Python
-    lsp.pylsp.setup {
-      on_attach = on_attach,
-      capabilities = capabilities
-    }
-
-    -- TypeScript
-    lsp.tsserver.setup {
-      on_attach = on_attach,
+    vim.lsp.config('pyright', {
       capabilities = capabilities,
-      filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx', 'javascript', 'javascriptreact', 'javascript.jsx' },
-      cmd = { 'typescript-language-server', '--stdio' },
-      init_options = {
-        preferences = {
-          includeInlayParameterNameHints = 'all',
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = false,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = false,
-          includeInlayEnumMemberValueHints = true,
-          importModuleSpecifierPreference = 'non-relative',
-        },
-      },
-    }
-
-    -- CSS modules
-    lsp.cssmodules_ls.setup {
       on_attach = on_attach,
-      capabilities = capabilities
-    }
-
-    -- Tailwind CSS
-    lsp.tailwindcss.setup {
-      on_attach = on_attach,
+    })
+    vim.lsp.enable('pyright')
+    vim.lsp.config('ruff', {
       capabilities = capabilities,
-      root_dir = lsp.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'tailwind.js', 'tailwind.ts', 'tailwind.config.cjs', 'tailwind.config.mjs', 'tailwind.config.js')
-    }
-
-    -- ESLint
-    lsp.eslint.setup {
       on_attach = on_attach,
-      capabilities = capabilities
-    }
+    })
+    vim.lsp.enable('ruff')
+
+    -- Oxlint
+    vim.lsp.config('oxylint', {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    vim.lsp.enable('oxylint')
 
     -- Rust
-    lsp.rust_analyzer.setup {
+    vim.lsp.config('rust_analyzer', {
       on_attach = on_attach,
       capabilities = capabilities,
       settings = {
@@ -81,50 +101,35 @@ return {
         -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
         ['rust-analyzer'] = {
           -- enable clippy on save
-          checkOnSave = {
-            command = 'clippy'
-          },
+          -- checkOnSave = {
+          --   command = 'clippy'
+          -- },
         }
       }
-    }
-
-    -- Clangd
-    lsp.clangd.setup {
-      on_attach = on_attach,
-      capabilities = capabilities
-    }
-
-    -- PowerShell
-    lsp.powershell_es.setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      bundle_path = os.getenv('LSP_POWERSHELL_PATH')
-    }
-
-    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = { spacing = 4, prefix = '●' },
-      severity_sort = true,
     })
+    vim.lsp.enable('rust_analyzer')
 
-
-    -- Diagnostic symbols in the sign column (gutter)
-    local signs = { Error = '', Warn = '', Hint = '', Info = '' }
-    for type, icon in pairs(signs) do
-      local hl = 'DiagnosticSign' .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-    end
-
-    vim.diagnostic.config {
+    vim.diagnostic.config({
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = '',
+          [vim.diagnostic.severity.WARN]  = '',
+          [vim.diagnostic.severity.HINT]  = '',
+          [vim.diagnostic.severity.INFO]  = '',
+        }
+      },
       virtual_text = {
         prefix = '●'
       },
       update_in_insert = true,
       float = {
-        source = 'always', -- Or 'if_many'
+        border = 'rounded',
+        source = 'if_many',
+        max_width = 88,
       },
-    }
+    })
+    vim.keymap.set("n", "<leader>e", function()
+      vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+    end, { desc = "Line diagnostics" })
   end
 }

@@ -13,7 +13,7 @@ local langs = {
   'markdown_inline',
   'json',
   'json5',
-  'go',
+ 'go',
   'rust',
   'java',
   'dockerfile',
@@ -28,6 +28,7 @@ local langs = {
   'cmake',
   'latex',
   'typst',
+  'comment',
 }
 
 return {

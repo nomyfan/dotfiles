@@ -1,5 +1,6 @@
 local shared = require('shared')
 local nmap = shared.nmap
+local map = shared.map
 
 vim.g.mapleader = ' '
 
@@ -50,3 +51,7 @@ nmap('<Leader>sr', function()
   require('mini.sessions').read(session_name)
 end)
 
+-- System clipboard
+map({'n', 'v'}, '<leader>y', '"+y')
+map({'n', 'v'}, '<leader>d', '"+d')
+map({'n', 'v'}, '<leader>p', '"+p')

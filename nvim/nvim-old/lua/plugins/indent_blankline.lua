@@ -12,6 +12,6 @@ return {
     -- vim.opt.listchars:append 'nbsp:⋅'
 
     vim.opt.termguicolors = true
-    ibl.setup()
+    ibl.setup {}
   end
 }

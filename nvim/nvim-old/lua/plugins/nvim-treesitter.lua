@@ -1,7 +1,10 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  lazy = false,
   config = function()
+    if require('shared').is_win() then
+      require('nvim-treesitter.install').compilers = { 'zig' }
+    end
+
     require('nvim-treesitter').setup {
       highlight = {
         enable = true

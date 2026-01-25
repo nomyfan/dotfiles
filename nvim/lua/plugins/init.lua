@@ -1,50 +1,70 @@
 return {
-  { 'nvim-tree/nvim-web-devicons',
-    opts = {
-      default = true
-    }
-  },
-  { 'craftzdog/solarized-osaka.nvim',
+  {
+    'nvim-mini/mini.nvim',
+    tag = 'v0.17.0',
     config = function()
-      require('solarized-osaka').setup {}
-      vim.cmd.colorscheme 'solarized-osaka'
-      local colors = require('solarized-osaka.colors')
-      vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = colors.default.fg, bg = colors.default.bg_highlight })
+      -- require('mini.comment').setup()
+      require('mini.basics').setup()
+      require('mini.starter').setup()
+      require('mini.sessions').setup()
     end
   },
-  { 'norcalli/nvim-colorizer.lua',
+  {
+    'akinsho/bufferline.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('colorizer').setup()
+      require('bufferline').setup()
     end
   },
-  { 'akinsho/bufferline.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      local shared = require('shared')
+      local nmap = shared.nmap
+      nmap('<Leader>tt', ':Neotree toggle<CR>', { desc = 'Toggle NeoTree', silent = true })
+      nmap('<Leader>tf', ':Neotree reveal<CR>', { desc = 'Toggle NeoTree', silent = true })
+      require('neo-tree').setup({
+        auto_clean_after_session_restore = true
+      })
+    end
+  },
+  {
+    'savq/melange-nvim',
+    config = function()
+      vim.opt.background = 'dark'
+      vim.cmd.colorscheme 'melange'
+    end
   },
   { 'wakatime/vim-wakatime' },
   { 'github/copilot.vim' },
-  { 'windwp/nvim-autopairs',
+  {
+    'windwp/nvim-autopairs',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     opts = {
-      disable_filetype = { 'TelescopePrompt' , 'vim' },
+      disable_filetype = { 'TelescopePrompt', 'vim' },
       check_ts = true,
     }
   },
-  { 'windwp/nvim-ts-autotag',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    init = function()
-    end
+  {
+    'windwp/nvim-ts-autotag',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }
   },
-  { 'folke/zen-mode.nvim' },
-  { 'numToStr/Comment.nvim',
+  {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
+  {
+    'rachartier/tiny-code-action.nvim',
     dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      'nvim-treesitter/nvim-treesitter'
+      "nvim-telescope/telescope.nvim",
     },
-    config = function()
-      -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#commentnvim
-      require('Comment').setup {
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      }
-    end
+    event = "LspAttach",
+    opts = {},
   }
 }

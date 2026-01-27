@@ -14,3 +14,4 @@ opt.si = true
 opt.fileformats:append('unix,dos')
 opt.wrap = true
 opt.cursorline = true
+opt.termguicolors = true

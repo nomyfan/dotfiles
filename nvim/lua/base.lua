@@ -12,6 +12,5 @@ opt.smartcase = true
 opt.ai = true
 opt.si = true
 opt.fileformats:append('unix,dos')
-
+opt.wrap = true
 opt.cursorline = true
-

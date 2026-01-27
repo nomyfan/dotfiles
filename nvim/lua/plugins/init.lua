@@ -28,9 +28,32 @@ return {
       local shared = require('shared')
       local nmap = shared.nmap
       nmap('<Leader>tt', ':Neotree toggle<CR>', { desc = 'Toggle NeoTree', silent = true })
-      nmap('<Leader>tf', ':Neotree reveal<CR>', { desc = 'Toggle NeoTree', silent = true })
+      nmap('<Leader>tf', ':Neotree reveal<CR>', { desc = 'Reveal NeoTree', silent = true })
       require('neo-tree').setup({
-        auto_clean_after_session_restore = true
+        auto_clean_after_session_restore = true,
+        window = {
+          mappings = {
+            ['fF'] = function(state)
+              local node = state.tree:get_node()
+              if not node then return end
+              local path = node:get_id()
+              if node.type == 'file' then
+                path = vim.fn.fnamemodify(path, ':h')
+              end
+              require('telescope.builtin').find_files({ cwd = path })
+            end,
+
+            ['fG'] = function(state)
+              local node = state.tree:get_node()
+              if not node then return end
+              local path = node:get_id()
+              if node.type == 'file' then
+                path = vim.fn.fnamemodify(path, ':h')
+              end
+              require('telescope.builtin').live_grep({ cwd = path })
+            end,
+          }
+        }
       })
     end
   },

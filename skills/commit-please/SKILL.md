@@ -161,6 +161,7 @@ After executing the commit, run `git log -1` to confirm the commit was created s
 - Push changes to remote (unless separately requested)
 - Amend commits or use other git flags unless explicitly requested
 - Make assumptions about what should be staged
+- Include `Co-Authored-By` or any co-author information in the commit message unless the user explicitly requests it
 
 **DO:**
 - Follow Conventional Commits specification strictly

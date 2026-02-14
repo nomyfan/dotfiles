@@ -17,3 +17,7 @@ path = "src/open.rs"
 [[bin]]
 name = "which"
 path = "src/which.rs"
+
+[[bin]]
+name = "envc"
+path = "src/envc.rs"

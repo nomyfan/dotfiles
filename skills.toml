@@ -1,20 +1,20 @@
 [skills.commit-please]
-source_url = "https://github.com/nomyfan/dotfiles/tree/af4ec7fae5804e79d3409b2c25f4765f52907616/skills/commit-please"
+source_url = "https://github.com/nomyfan/dotfiles/tree/skills/skills/commit-please"
 slug = "nomyfan/dotfiles"
 path = "skills/commit-please"
-sha = "af4ec7fae5804e79d3409b2c25f4765f52907616"
-checksum = "sha256:a44048340d54f5e44425d241c225a1f1213706addfb4c3a61e2c16e41e9b0ba5"
+sha = "041a42198f68dcc6e0d980694840be9ce2c83b74"
+checksum = "sha256:2c5436cfcf54a28a1308d3ac0609269671394bdf31d2dca72595ea9dd044c232"
 
 [skills.mcp-skill-creator]
-source_url = "https://github.com/nomyfan/dotfiles/tree/5da1762e4d4382b2b8b301e6ef0069f949344100/skills/mcp-skill-creator"
+source_url = "https://github.com/nomyfan/dotfiles/tree/skills/skills/mcp-skill-creator"
 slug = "nomyfan/dotfiles"
 path = "skills/mcp-skill-creator"
-sha = "5da1762e4d4382b2b8b301e6ef0069f949344100"
+sha = "6d0c2399eabdd5ff4b829133409e4b0b7813fc44"
 checksum = "sha256:bff261da84534a4268904a5335cb0492672606cc703d55e67c8d96fc96423d7d"
 
 [skills.skill-creator]
-source_url = "https://github.com/anthropics/skills/tree/69c0b1a0674149f27b61b2635f935524b6add202/skills/skill-creator"
+source_url = "https://github.com/anthropics/skills/tree/main/skills/skill-creator"
 slug = "anthropics/skills"
 path = "skills/skill-creator"
-sha = "ef740771ac901e03fbca3ce4e1c453a96010f30a"
+sha = "7bd8fc459f09f0e14dcc2adbb4a5a58e60ea755c"
 checksum = "sha256:983170c54ebd674cfd33cc0d3269e0cc2ec36163abfb0d292e36e4dfec9ff9cc"

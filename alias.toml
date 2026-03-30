@@ -19,9 +19,6 @@ ll = "eza -l"
 lt = "eza -T"
 # create-x
 cvite = "create-x --url https://github.com/nomyfan/templates/tree/main/vite-react-ts --name"
-# bat
-b = "bat"
-bp = "bat -p"
 # git
 gds = "git diff --staged"
 grmc = "git rm -r --cached"

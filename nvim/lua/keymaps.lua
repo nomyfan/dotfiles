@@ -55,3 +55,35 @@ end)
 map({'n', 'v'}, '<leader>y', '"+y')
 map({'n', 'v'}, '<leader>d', '"+d')
 map({'n', 'v'}, '<leader>p', '"+p')
+
+--- Yank the current visual selection as a file line range reference (e.g. src/foo.lua#L10-20).
+--- @param opts? { absolute?: boolean, register?: string }
+local function yank_line_range(opts)
+  opts = opts or {}
+  local absolute = opts.absolute or false
+  local register = opts.register or '+'
+
+  local start_line = vim.fn.line('v')
+  local end_line   = vim.fn.line('.')
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  local filename = absolute and vim.fn.expand('%:p') or vim.fn.fnamemodify(vim.fn.expand('%:p'), ':.')
+
+  local line_range = filename .. '#L' .. start_line
+  if start_line ~= end_line then
+    line_range = line_range .. '-' .. end_line
+  end
+
+  vim.fn.setreg(register, line_range)
+  vim.notify('Yanked: ' .. line_range)
+end
+
+-- Default: relative path
+vim.keymap.set('v', '<leader>yl', function() yank_line_range() end,
+  { desc = 'Yank file#Lrange (relative)' })
+
+-- Absolute path variant
+vim.keymap.set('v', '<leader>yL', function() yank_line_range({ absolute = true }) end,
+  { desc = 'Yank file#Lrange (absolute)' })

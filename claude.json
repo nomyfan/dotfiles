@@ -1,6 +1,20 @@
 {
   "env": {
     "HTTPS_PROXY": "http://localhost:7890",
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "0"
-  }
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "DISABLE_AUTOUPDATER": "1",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1"
+  },
+  "model": "claude-opus-4-6",
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/nomyfan/.claude/statusline-command.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+  },
+  "effortLevel": "medium"
 }

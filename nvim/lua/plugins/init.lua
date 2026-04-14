@@ -57,13 +57,13 @@ return {
       })
     end
   },
-  {
-    'savq/melange-nvim',
-    config = function()
-      vim.opt.background = 'dark'
-      vim.cmd.colorscheme 'melange'
-    end
-  },
+  -- {
+  --   'savq/melange-nvim',
+  --   config = function()
+  --     vim.opt.background = 'dark'
+  --     vim.cmd.colorscheme 'melange'
+  --   end
+  -- },
   { 'wakatime/vim-wakatime' },
   { 'github/copilot.vim' },
   {

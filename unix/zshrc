@@ -78,6 +78,3 @@ diffs() {
 [ -s "$HOME/export-esp.sh" ] && source "$HOME/export-esp.sh"
 # END ESP32
 
-# Claude Code
-export CLAUDE_CODE_NO_FLICKER=1
-# END Claude Code

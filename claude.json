@@ -1,7 +1,6 @@
 {
   "env": {
     "HTTPS_PROXY": "http://localhost:7890",
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
     "DISABLE_AUTOUPDATER": "1"
   },
   "model": "claude-opus-4-7",

@@ -302,27 +302,41 @@ fi
 # ── Rate limit lines ────────────────────────────────────
 rate_lines=""
 
-if [ -n "$usage_data" ] && echo "$usage_data" | jq -e . >/dev/null 2>&1; then
-    bar_width=10
+bar_width=10
 
-    five_hour_pct=$(echo "$usage_data" | jq -r '.five_hour.utilization // 0' | awk '{printf "%.0f", $1}')
-    five_hour_reset_iso=$(echo "$usage_data" | jq -r '.five_hour.resets_at // empty')
-    five_hour_reset=$(format_reset_time "$five_hour_reset_iso" "time")
+rl_five_hour=$(echo "$input" | jq -r '.rate_limits.five_hour // empty')
+rl_seven_day=$(echo "$input" | jq -r '.rate_limits.seven_day // empty')
+
+if [ -n "$rl_five_hour" ]; then
+    five_hour_pct=$(echo "$rl_five_hour" | jq -r '.used_percentage // 0' | awk '{printf "%.0f", $1}')
+    five_hour_epoch=$(echo "$rl_five_hour" | jq -r '.resets_at // empty')
+    five_hour_reset=""
+    if [ -n "$five_hour_epoch" ] && [ "$five_hour_epoch" != "null" ]; then
+        five_hour_reset=$(date -j -r "$five_hour_epoch" +"%l:%M%p" 2>/dev/null | sed 's/^ //; s/\.//g' | tr '[:upper:]' '[:lower:]')
+        [ -z "$five_hour_reset" ] && five_hour_reset=$(date -d "@$five_hour_epoch" +"%l:%M%P" 2>/dev/null | sed 's/^ //; s/\.//g')
+    fi
     five_hour_bar=$(build_bar "$five_hour_pct" "$bar_width")
     five_hour_pct_color=$(color_for_pct "$five_hour_pct")
     five_hour_pct_fmt=$(printf "%3d" "$five_hour_pct")
-
     rate_lines+="${white}current${reset} ${five_hour_bar} ${five_hour_pct_color}${five_hour_pct_fmt}%${reset} ${dim}⟳${reset} ${white}${five_hour_reset}${reset}"
+fi
 
-    seven_day_pct=$(echo "$usage_data" | jq -r '.seven_day.utilization // 0' | awk '{printf "%.0f", $1}')
-    seven_day_reset_iso=$(echo "$usage_data" | jq -r '.seven_day.resets_at // empty')
-    seven_day_reset=$(format_reset_time "$seven_day_reset_iso" "datetime")
+if [ -n "$rl_seven_day" ]; then
+    seven_day_pct=$(echo "$rl_seven_day" | jq -r '.used_percentage // 0' | awk '{printf "%.0f", $1}')
+    seven_day_epoch=$(echo "$rl_seven_day" | jq -r '.resets_at // empty')
+    seven_day_reset=""
+    if [ -n "$seven_day_epoch" ] && [ "$seven_day_epoch" != "null" ]; then
+        seven_day_reset=$(date -j -r "$seven_day_epoch" +"%b %-d, %l:%M%p" 2>/dev/null | sed 's/  / /g; s/^ //; s/\.//g' | tr '[:upper:]' '[:lower:]')
+        [ -z "$seven_day_reset" ] && seven_day_reset=$(date -d "@$seven_day_epoch" +"%b %-d, %l:%M%P" 2>/dev/null | sed 's/  / /g; s/^ //; s/\.//g')
+    fi
     seven_day_bar=$(build_bar "$seven_day_pct" "$bar_width")
     seven_day_pct_color=$(color_for_pct "$seven_day_pct")
     seven_day_pct_fmt=$(printf "%3d" "$seven_day_pct")
+    [ -n "$rate_lines" ] && rate_lines+="\n"
+    rate_lines+="${white}weekly${reset}  ${seven_day_bar} ${seven_day_pct_color}${seven_day_pct_fmt}%${reset} ${dim}⟳${reset} ${white}${seven_day_reset}${reset}"
+fi
 
-    rate_lines+="\n${white}weekly${reset}  ${seven_day_bar} ${seven_day_pct_color}${seven_day_pct_fmt}%${reset} ${dim}⟳${reset} ${white}${seven_day_reset}${reset}"
-
+if [ -n "$usage_data" ] && echo "$usage_data" | jq -e '.extra_usage' >/dev/null 2>&1; then
     extra_enabled=$(echo "$usage_data" | jq -r '.extra_usage.is_enabled // false')
     if [ "$extra_enabled" = "true" ]; then
         extra_pct=$(echo "$usage_data" | jq -r '.extra_usage.utilization // 0' | awk '{printf "%.0f", $1}')
@@ -336,8 +350,8 @@ if [ -n "$usage_data" ] && echo "$usage_data" | jq -e . >/dev/null 2>&1; then
             extra_reset=$(date -d "$(date +%Y-%m-01) +1 month" +"%b %-d" 2>/dev/null | tr '[:upper:]' '[:lower:]')
         fi
 
-        extra_col="${white}extra${reset}   ${extra_bar} ${extra_pct_color}\$${extra_used}${dim}/${reset}${white}\$${extra_limit}${reset} ${dim}⟳${reset} ${white}${extra_reset}${reset}"
-        rate_lines+="\n${extra_col}"
+        [ -n "$rate_lines" ] && rate_lines+="\n"
+        rate_lines+="${white}extra${reset}   ${extra_bar} ${extra_pct_color}\$${extra_used}${dim}/${reset}${white}\$${extra_limit}${reset} ${dim}⟳${reset} ${white}${extra_reset}${reset}"
     fi
 fi
 

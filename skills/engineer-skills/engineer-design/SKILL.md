@@ -53,9 +53,25 @@ For each: the choice made and the trade-off accepted.
 What's most likely to be wrong. How to find out early.
 The riskiest assumption should become the first thing built or validated.
 
-## Recommended First Patch
-One concrete next step: the smallest piece of implementation that
-validates the riskiest assumption or unblocks everything else.
+## Implementation Roadmap
+Ordered sequence of steps to execute this design. Put the riskiest assumption first.
+Each step should be independently buildable and verifiable.
+
+For each step:
+  - [area] action
+  - Purpose: what this step proves or unlocks
+  - Verification: how to know it worked
+
+Example shape:
+  - [ ] [risk validation] build the smallest slice that proves X
+        Purpose: validate the riskiest assumption before committing to the full design
+        Verification: run Y / observe Z
+  - [ ] [core logic] implement the domain behavior behind the chosen interface
+        Purpose: make the central behavior testable in isolation
+        Verification: unit tests cover A and B
+  - [ ] [integration] connect the core behavior to the existing system
+        Purpose: expose the behavior through the real boundary
+        Verification: integration test or manual flow confirms C
 ```
 
 ---

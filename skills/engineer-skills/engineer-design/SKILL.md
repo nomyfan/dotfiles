@@ -11,6 +11,8 @@ Read the requirements and any relevant existing code, then produce a **design br
 
 If key information is missing (scale, constraints, existing interfaces), state your assumptions explicitly in the brief rather than asking upfront. Ask only when an assumption would fundamentally change the design direction.
 
+Before writing the brief, run cheap, reversible probes for critical unknowns when they can materially improve the design. Prefer reading existing code/types/docs, running existing tests, or using a small throwaway snippet. Keep persistent file changes, network calls, installs, and expensive benchmarks in the roadmap unless the user explicitly asks to run them now.
+
 ## Design Brief Template
 
 Keep the brief concise. Omit sections that add no decision value, and spend detail only on load-bearing choices.
@@ -26,6 +28,11 @@ Out: what it deliberately does not cover.
 ## Assumptions
 Constraints and unknowns treated as given for this design.
 Call out anything that, if wrong, would change the design significantly.
+
+## Validation Findings
+Cheap probes already run.
+For each: question, method, result, design implication.
+Omit this section when no probe was useful.
 
 ## Components
 Each component: name, single-sentence responsibility.

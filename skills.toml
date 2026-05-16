@@ -7,6 +7,7 @@ checksum = "sha256:2c5436cfcf54a28a1308d3ac0609269671394bdf31d2dca72595ea9dd044c
 
 [skills.engineer-craft]
 source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-craft"
+collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
 slug = "nomyfan/dotfiles"
 path = "skills/engineer-skills/engineer-craft"
 sha = "e05547bbd5cc818a93a0a74926f6ba99e3e17f98"
@@ -14,6 +15,7 @@ checksum = "sha256:d7319b734e3be850c2cb8b7d12d3861b7f55eb07e8d9c608eb71799357ec7
 
 [skills.engineer-design]
 source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-design"
+collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
 slug = "nomyfan/dotfiles"
 path = "skills/engineer-skills/engineer-design"
 sha = "f21da3ed170bca9528c8eb360d33feb1a57d3bb2"

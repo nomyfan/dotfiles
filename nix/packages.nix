@@ -14,7 +14,7 @@
     gnupg
     delta
     jless
-    du-dust
+    dust
     eza
     bat
     hyperfine
@@ -31,5 +31,6 @@
     zstd
     pstree
     ast-grep
+    fastfetch
   ;
 }

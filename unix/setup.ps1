@@ -12,6 +12,20 @@ New-Item -ItemType SymbolicLink -Path (Join-Path $HOME .config starship.toml) -V
 # Atuin config
 New-Item -ItemType SymbolicLink -Path (Join-Path $HOME .config atuin config.toml) -Value (Join-Path $dirname .. atuin.toml) -Force
 
+# Ghostty config
+$GhosttyConfigDir = Join-Path $HOME .config ghostty
+$GhosttyThemesDir = Join-Path $GhosttyConfigDir themes
+New-Item -ItemType Directory -Path $GhosttyThemesDir -Force
+New-Item -ItemType SymbolicLink -Path (Join-Path $GhosttyConfigDir config) -Value (Join-Path $dirname .. ghostty) -Force
+New-Item -ItemType SymbolicLink -Path (Join-Path $GhosttyThemesDir vellum-dark) -Value (Join-Path $dirname .. vellum-theme themes ghostty-dark) -Force
+New-Item -ItemType SymbolicLink -Path (Join-Path $GhosttyThemesDir vellum-light) -Value (Join-Path $dirname .. vellum-theme themes ghostty-light) -Force
+
+# Zed themes
+$ZedThemesDir = Join-Path $HOME .config zed themes
+New-Item -ItemType Directory -Path $ZedThemesDir -Force
+New-Item -ItemType SymbolicLink -Path (Join-Path $ZedThemesDir zed-dark.json) -Value (Join-Path $dirname .. vellum-theme themes zed-dark.json) -Force
+New-Item -ItemType SymbolicLink -Path (Join-Path $ZedThemesDir zed-light.json) -Value (Join-Path $dirname .. vellum-theme themes zed-light.json) -Force
+
 # Tmux config
 New-Item -ItemType SymbolicLink -Path (Join-Path $HOME .tmux.conf) -Value (Join-Path $dirname tmux.conf) -Force
 

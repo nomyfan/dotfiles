@@ -1,3 +1,6 @@
 [submodule "ss"]
 	path = ss
 	url = git@github.com:nomyfan/ss.git
+[submodule "vellum-theme"]
+	path = vellum-theme
+	url = git@github.com:nomyfan/vellum-theme.git

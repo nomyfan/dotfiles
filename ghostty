@@ -1,7 +1,10 @@
 font-family = "Berkeley Mono"
 font-family = "BlexMono Nerd Font Mono"
 font-size = 15
-theme = "Atom"
+theme = dark:vellum-dark,light:vellum-light
+#shell-integration-features = no-cursor
+cursor-style = bar
+adjust-cursor-thickness = 3
 
 keybind = super+shift+right=next_tab
 keybind = super+shift+left=previous_tab

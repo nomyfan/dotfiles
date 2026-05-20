@@ -4,9 +4,9 @@ font-size = 15
 theme = dark:vellum-dark,light:vellum-light
 # Use common terminfo for older SSH targets such as Raspberry Pi OS.
 term = xterm-256color
-#shell-integration-features = no-cursor
-cursor-style = bar
-adjust-cursor-thickness = 3
+shell-integration-features = no-cursor
+cursor-style = block
+# adjust-cursor-thickness = 3
 
 keybind = super+shift+right=next_tab
 keybind = super+shift+left=previous_tab

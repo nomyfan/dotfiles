@@ -74,3 +74,6 @@ zsh = "node $HOME/.ss/JavaScript/b64hex.mjs"
 powershell = "node (Join-Path $HOME .ss JavaScript b64hex.mjs)"
 # zsh = "base64 -d | hexdump -v -e '1/1 \\\"%02x\\\"'"
 
+[aliases.spy]
+zsh = "source .venv/bin/activate"
+powershell = ". .venv/Scripts/Activate.ps1"

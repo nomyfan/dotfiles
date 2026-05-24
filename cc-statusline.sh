@@ -318,7 +318,7 @@ if [ -n "$rl_five_hour" ]; then
     five_hour_bar=$(build_bar "$five_hour_pct" "$bar_width")
     five_hour_pct_color=$(color_for_pct "$five_hour_pct")
     five_hour_pct_fmt=$(printf "%3d" "$five_hour_pct")
-    rate_lines+="${white}current${reset} ${five_hour_bar} ${five_hour_pct_color}${five_hour_pct_fmt}%${reset} ${dim}⟳${reset} ${white}${five_hour_reset}${reset}"
+    rate_lines+="${white}5-hour${reset} ${five_hour_bar} ${five_hour_pct_color}${five_hour_pct_fmt}%${reset} ${dim}⟳${reset} ${white}${five_hour_reset}${reset}"
 fi
 
 if [ -n "$rl_seven_day" ]; then

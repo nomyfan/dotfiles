@@ -1,9 +1,9 @@
 [skills.commit-please]
-source_url = "https://github.com/nomyfan/dotfiles/tree/skills/skills/commit-please"
+source_url = "https://github.com/nomyfan/dotfiles/tree/main/skills/commit-please"
 slug = "nomyfan/dotfiles"
 path = "skills/commit-please"
-sha = "87e268ac11a6fca8f209453d289cb28605792f7c"
-checksum = "sha256:2c5436cfcf54a28a1308d3ac0609269671394bdf31d2dca72595ea9dd044c232"
+sha = "197c57ac24d4fa48a500d9c12aef9cfdf80d9853"
+checksum = "sha256:5e33b1a22cf989e126cdfc043cc9e3fa1f84729536d826ea4451eedaa876ae20"
 
 [skills.engineer-craft]
 source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-craft"

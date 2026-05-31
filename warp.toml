@@ -3,7 +3,7 @@ spacing = "compact"
 
 [appearance.themes]
 selected_system_themes = { dark = "dark", light = "light" }
-theme = { custom = { name = "Vellum-dark", path = "/Users/nomyfan/.warp/themes/vellum-dark.yaml" } }
+theme = "dark"
 system_theme = false
 
 [appearance.text]

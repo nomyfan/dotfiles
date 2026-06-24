@@ -40,7 +40,7 @@ rgi = "rg -i"
 # misc
 test-ci = "git commit --allow-empty -m 'test ci' && git push"
 up-codex = "npm i -g @openai/codex"
-up-cc = "npm i -g @anthropic-ai/claude-code"
+up-cc = "claude update"
 
 [aliases.cls]
 zsh = "clear"

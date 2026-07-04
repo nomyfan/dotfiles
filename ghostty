@@ -1,7 +1,8 @@
 font-family = "Berkeley Mono"
 font-family = "BlexMono Nerd Font Mono"
-font-size = 15
-theme = dark:vellum-dark,light:vellum-light
+font-size = 14
+# theme = dark:vellum-dark,light:vellum-light
+theme = vellum-dark
 # Use common terminfo for older SSH targets such as Raspberry Pi OS.
 term = xterm-256color
 shell-integration-features = no-cursor

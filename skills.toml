@@ -21,6 +21,13 @@ path = "skills/engineer-skills/engineer-design"
 sha = "f21da3ed170bca9528c8eb360d33feb1a57d3bb2"
 checksum = "sha256:c0664ea25fe0b603be2ca5b5af2d67e8067a8c3fb975fc200138e463dd0a2228"
 
+[skills.handoff]
+source_url = "https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff"
+slug = "mattpocock/skills"
+path = "skills/productivity/handoff"
+sha = "221ffca96736afefdc08ca7cf0b3965e9ea83f41"
+checksum = "sha256:5d0f81e38abe6b984e1feaa731927de5291d040982106ac513cf54ec240e00ec"
+
 [skills.hatch-pet]
 source_url = "https://github.com/openai/skills/tree/main/skills/.curated/hatch-pet"
 slug = "openai/skills"

@@ -1,9 +1,9 @@
 [appearance]
-spacing = "compact"
+spacing = "normal"
 
 [appearance.themes]
 selected_system_themes = { dark = "dark", light = "light" }
-theme = "dark"
+theme = { custom = { name = "Vellum-dark", path = "vellum-dark.yaml" } }
 system_theme = false
 
 [appearance.text]
@@ -21,7 +21,7 @@ zoom_level = 100
 input_mode = "pinned_to_bottom"
 
 [appearance.panes]
-should_dim_inactive_panes = true
+should_dim_inactive_panes = false
 
 [appearance.tabs]
 show_indicators_button = true
@@ -37,7 +37,7 @@ compact_subtitle = "branch"
 app_icon = "classic_1"
 
 [privacy]
-crash_reporting_enabled = false
+crash_reporting_enabled = true
 telemetry_enabled = false
 custom_secret_regex_list = [
   { name = "IPv4 Address", pattern = '\b((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}\b' },
@@ -102,7 +102,7 @@ right_alt = false
 agent_mode_codebase_context_auto_indexing = true
 
 [agents]
-cloud_conversation_storage_enabled = false
+cloud_conversation_storage_enabled = true
 
 [agents.profiles]
 agent_mode_execute_readonly_commands = true

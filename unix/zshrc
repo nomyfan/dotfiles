@@ -47,10 +47,6 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 
 [ -s "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
 diffs() {
   if (( $# != 2 )); then
     print -u2 'Usage: diffs <a> <b>'

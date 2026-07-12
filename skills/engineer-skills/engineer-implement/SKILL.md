@@ -1,9 +1,9 @@
 ---
-name: engineer-craft
+name: engineer-implement
 description: Guide coding agents to write minimal, correct, maintainable code with genuine engineering taste. Activate when writing new code, implementing features, fixing bugs, or refactoring. The goal is code that a senior engineer would be proud of — not impressive, not defensive, not speculative — just exactly right.
 ---
 
-# Engineer Craft
+# Engineer Implement
 
 The best code looks like it couldn't have been written any other way. Simplicity is a design achievement. Every line is a maintenance burden; the best line is often the one you deleted.
 
@@ -27,6 +27,16 @@ Clever code is a liability. Clear code is an asset.
 **Find the simplest shape.** What's the smallest change to the system that produces the correct behavior? Work from that baseline. Every addition — a parameter, a branch, an abstraction — needs a concrete reason to exist.
 
 **Design the API from the call site.** Code is read at the call site, not the implementation. Ask: what would the ideal interface look like to the caller? Then implement that. An interface that feels natural to use is usually also simpler to implement.
+
+## Implementing From a Design Brief
+
+When the task continues a `docs/specs/*.md` design brief, treat it as the plan, not gospel — designs are wrong more often than we'd like once they meet real code.
+
+**Keep the roadmap current.** As each `Implementation Roadmap` step completes and its verification passes, check it off in the brief (`- [ ]` → `- [x]`). A roadmap that isn't updated is worse than no roadmap — it tells the next reader the wrong thing.
+
+**Record deviations by severity, not by default.**
+- *Minor* — an implementation detail differs from the brief, but the interfaces, data model, and trade-offs it described still hold. Add one line under a `## Deviations from Design` section at the end of the brief (create it if missing): what changed, why. Don't log things that don't change what a reader of the brief would believe.
+- *Load-bearing* — the work reveals that an Interface, the Data Model, or a Load-Bearing Decision in the brief is actually wrong or unworkable. Don't quietly code around it. Stop and re-run the design skill against the existing brief to reconsider that decision — it updates the brief in place (including `## Alternatives Considered`), not you.
 
 ## The Dimensions of Quality
 

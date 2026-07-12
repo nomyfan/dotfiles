@@ -5,35 +5,28 @@ path = "skills/commit-please"
 sha = "197c57ac24d4fa48a500d9c12aef9cfdf80d9853"
 checksum = "sha256:5e33b1a22cf989e126cdfc043cc9e3fa1f84729536d826ea4451eedaa876ae20"
 
-[skills.engineer-craft]
-source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-craft"
-collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
-slug = "nomyfan/dotfiles"
-path = "skills/engineer-skills/engineer-craft"
-sha = "e05547bbd5cc818a93a0a74926f6ba99e3e17f98"
-checksum = "sha256:d7319b734e3be850c2cb8b7d12d3861b7f55eb07e8d9c608eb71799357ec7935"
-
 [skills.engineer-design]
 source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-design"
 collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
 slug = "nomyfan/dotfiles"
 path = "skills/engineer-skills/engineer-design"
-sha = "f21da3ed170bca9528c8eb360d33feb1a57d3bb2"
-checksum = "sha256:c0664ea25fe0b603be2ca5b5af2d67e8067a8c3fb975fc200138e463dd0a2228"
+sha = "6909b129af609f12595891522f4ff3aa2b90ffbb"
+checksum = "sha256:eca3427394f869d061cb70aaebc1e046111e363d328acff2124b72f513691c84"
+
+[skills.engineer-implement]
+source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-implement"
+collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
+slug = "nomyfan/dotfiles"
+path = "skills/engineer-skills/engineer-implement"
+sha = "6909b129af609f12595891522f4ff3aa2b90ffbb"
+checksum = "sha256:5528c9495842053b130798e112e883b7c74a58d0d0226bede17d22ea87ad510c"
 
 [skills.handoff]
 source_url = "https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff"
 slug = "mattpocock/skills"
 path = "skills/productivity/handoff"
-sha = "221ffca96736afefdc08ca7cf0b3965e9ea83f41"
-checksum = "sha256:5d0f81e38abe6b984e1feaa731927de5291d040982106ac513cf54ec240e00ec"
-
-[skills.hatch-pet]
-source_url = "https://github.com/openai/skills/tree/main/skills/.curated/hatch-pet"
-slug = "openai/skills"
-path = "skills/.curated/hatch-pet"
-sha = "af9b54f235d0d56c6b4410be54d578b0fda4ddfc"
-checksum = "sha256:89feebfdc6ee2803d64c6ce357ce3229dd97e162e28cdf7c922c67d5ecd53635"
+sha = "386d4ff719a7c420ad1454232d0436b01f1b8c17"
+checksum = "sha256:87e353708ab36062eac54ddb593a97ca553c0cb4bfa1ed1fdaf68520700723f1"
 
 [skills.skill-creator]
 source_url = "https://github.com/anthropics/skills/tree/main/skills/skill-creator"

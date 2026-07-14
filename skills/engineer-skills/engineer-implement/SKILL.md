@@ -1,6 +1,6 @@
 ---
 name: engineer-implement
-description: Guide coding agents to write minimal, correct, maintainable code with genuine engineering taste. Activate when writing new code, implementing features, fixing bugs, or refactoring. The goal is code that a senior engineer would be proud of — not impressive, not defensive, not speculative — just exactly right.
+description: Guide coding agents to write minimal, correct, maintainable code with genuine engineering taste. Activate when completing the task involves creating or modifying code.
 ---
 
 # Engineer Implement

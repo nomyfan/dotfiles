@@ -19,6 +19,8 @@ Before writing the brief, run cheap, reversible probes for critical unknowns whe
 
 For each load-bearing decision, check whether a second approach exists that you'd genuinely be willing to defend — not a strawman built to lose. If one does, sketch and compare both before committing; comparing them is usually what surfaces the real trade-off, and the first idea is rarely the best one until something else exists to contrast it against. If the approach is obvious and no real alternative comes to mind, don't manufacture one — say so and move on.
 
+**Approval gate.** Writing the brief is not the end of this skill — it's a checkpoint. Once the brief is written (or updated) to disk, stop and ask the user to review it and approve — point to the file path and a short summary of the key decisions, don't re-paste the brief's contents into the conversation. Do not proceed to implementation until the user approves. If the user requests changes, revise the brief and ask again. This applies to brief revisions triggered mid-implementation too: pause and get approval on the updated section before resuming code changes.
+
 ## Design Brief Template
 
 Keep the brief concise. Omit sections that add no decision value, and spend detail only on load-bearing choices.

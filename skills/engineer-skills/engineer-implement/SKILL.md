@@ -110,7 +110,18 @@ Hard-code values until you have a concrete second use case with a different valu
 
 ### When to add defensive checks
 
-Trust the types, the framework, and your own code's internal invariants. Validate only at system entry points: user input, external API responses, file contents. Inside the system, if a check is only there "to be safe," and the condition can't actually happen given the surrounding code — delete it. It adds noise and implies a contract that doesn't exist.
+Trust the types, the framework, and your own code's internal invariants. Validate only at system entry points: user input, external API responses, file/DB reads, environment and config, and third-party code whose contract isn't enforced by the type checker. Once a value has crossed one of those boundaries and been checked, treat it as clean for the rest of its life — checking it again downstream doesn't add safety, it just buries the one check that matters among several that don't. If a design brief exists, its Interfaces and Assumptions sections should already say where these boundaries are and which states the system rules out — use that instead of re-deriving it from scratch.
+
+The underlying test is always the same: can you name a specific guarantee — a type, a validated boundary, or a stated system invariant — that makes this check redundant? If you can, delete it. If you can't, or you're not sure, that uncertainty is the real signal — go find out (ask the user, check the design brief) rather than adding the check by default so it feels safe either way.
+
+That test shows up in recurring shapes. Treat these as worked examples of the reasoning, not a checklist to clear and stop:
+- **Origin already guarantees it.** A null/undefined check on a value the type system already marks as required, or re-validating a shape already validated at the boundary (e.g. checking an `id` looks like a string again three layers after the HTTP handler parsed it) — the guarantee exists upstream, so checking again is redundant, not extra-safe.
+- **The failure mode can't occur.** A `try/catch` around a call that can't throw given its documented contract, or a `default:` branch on a switch/match the type system can already prove exhaustive — the honest answer to "what happens if this fires" is "nothing, it can't."
+- **The state is conceivable but not reachable here.** A field that's always populated because every caller fills it in, a list that's never empty because it's built from a non-empty enum, a branch unreachable because upstream already routed that case elsewhere. This is the hardest one to catch — it doesn't read like a reflexive null check, it reads like careful engineering.
+
+Plenty of over-defensive code fits the same test without matching any bullet above — a defensive copy guarding against mutation nobody actually performs, a retry wrapped around a call that doesn't fail transiently, a default for a parameter every existing caller already supplies. The question is never "does this match one of the examples" — it's "can I name the concrete guarantee this check would be redundant against."
+
+Every defensive check makes an implicit claim: "this can actually go wrong here." When that claim is false, it costs the next reader real time — they now have to work out which checks in the file are load-bearing and which are noise, because nothing distinguishes them. That's the real cost of over-defensive code: not the extra lines, but the erosion of trust in every check that follows.
 
 ## What Senior Engineers Delete
 
@@ -131,7 +142,7 @@ Before submitting, read the diff as if you're seeing it for the first time:
 
 1. **Can I state in one sentence what each function does?** If not, the problem is the structure, not the description — decompose.
 2. **Does every name compress intent?** If a name could apply to many things, it's not doing its job.
-3. **Does this piece of code need to exist?** Apply to every line, check, abstraction, and parameter: if deleting it breaks nothing and clarifies nothing, delete it. If the type system or caller already prevents a failure, remove the handler. If an abstraction has no real second use case yet, inline it.
+3. **Does this piece of code need to exist?** Apply to every line, check, abstraction, and parameter: if deleting it breaks nothing and clarifies nothing, delete it. Defensive checks are the most common offender here, especially ones guarding a case that's merely imaginable rather than actually reachable in this system — if the type system, caller, or the system's real invariants already prevent a failure, remove the handler. If an abstraction has no real second use case yet, inline it.
 4. **Does solution complexity match problem complexity?** If the solution is much more complex, re-examine what problem you're actually solving.
 
 ## Testing Code

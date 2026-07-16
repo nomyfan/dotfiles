@@ -13,9 +13,9 @@ Write the brief to `docs/specs/YYYY-MM-DD-{goal}.md`, where the date is today's 
 
 **Revising an existing brief.** This skill also runs when implementation reveals that a Load-Bearing Decision, Interface, or the Data Model in an existing brief no longer holds. In that case, edit the existing file in place rather than creating a new one: apply the same rigor (compare alternatives if a genuine second option exists), update the affected sections directly, and record the discarded original choice under `## Alternatives Considered` so the history isn't lost.
 
-If key information is missing (scale, constraints, existing interfaces), state your assumptions explicitly in the brief rather than asking upfront. Ask only when an assumption would fundamentally change the design direction.
+When key information is missing — scale, constraints, existing interfaces, or which states and cases can actually occur — default to asking rather than assuming. That last category matters as much as the others: a design that quietly assumes a case is possible (or impossible) sends every downstream interface and error-handling decision in the wrong direction, and it's the kind of thing only the user can answer with confidence — code can't tell you what will never be called with what. Ask targeted questions (the AskUserQuestion tool is a good fit when there's a handful of discrete options) about anything that would change which design you'd pick, including what's actually reachable in production versus merely conceivable. Reserve stated assumptions in the brief for details that don't change the design's shape either way — an exact throughput number when only the order of magnitude matters, for instance. If you're unsure whether something is boundary-defining, that uncertainty is itself a reason to ask.
 
-Before writing the brief, run cheap, reversible probes for critical unknowns when they can materially improve the design. Prefer reading existing code/types/docs, running existing tests, or using a small throwaway snippet. Keep persistent file changes, network calls, installs, and expensive benchmarks in the roadmap unless the user explicitly asks to run them now.
+Before writing the brief, run cheap, reversible probes for critical unknowns when they can materially improve the design. Reading existing code, types, docs, and running existing tests is the cheapest way to answer a question — start there. When those don't settle it, write an actual spike: a throwaway script or prototype that exercises the real library, API, or data path to test one load-bearing assumption directly — does this library actually behave the way its docs claim, does this approach hit the latency budget, what does this endpoint actually return for the case that matters. A spike exists to answer exactly one question; build the smallest thing that answers it. Put spike code under `.scratchpad/{spike-name}/` in the current working directory, isolated from the real source tree. Leave it there once the question is answered — don't delete it unless the user explicitly asks; it's disposable but the user may still want to look at it. Keep persistent file changes, network calls, installs, and expensive benchmarks in the roadmap unless the user explicitly asks to run them now.
 
 For each load-bearing decision, check whether a second approach exists that you'd genuinely be willing to defend — not a strawman built to lose. If one does, sketch and compare both before committing; comparing them is usually what surfaces the real trade-off, and the first idea is rarely the best one until something else exists to contrast it against. If the approach is obvious and no real alternative comes to mind, don't manufacture one — say so and move on.
 
@@ -36,6 +36,9 @@ Out: what it deliberately does not cover.
 ## Assumptions
 Constraints and unknowns treated as given for this design.
 Call out anything that, if wrong, would change the design significantly.
+Include which input states or cases are guaranteed not to occur, not just
+which ones are guaranteed to occur — that's what tells implementation
+which cases don't need handling.
 
 ## Validation Findings
 Cheap probes already run.
@@ -65,6 +68,13 @@ the boundary is wrong — reconsider the decomposition.
 If two components' interfaces need to change together for most edits,
 information is leaking across the boundary — merge them or move the
 leaking piece to whichever side actually owns it.
+
+Mark which interfaces sit at a trust boundary — the first point where
+user input, external API responses, or other unvalidated data enters
+the system — and state what gets validated there. Everything downstream
+of that point should be able to rely on the guarantee without
+re-checking it, so implementation has an authoritative answer instead
+of having to guess where re-validation is actually needed.
 
 ## Data Model
 Key entities, their relationships, ownership, and where they live.

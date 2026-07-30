@@ -56,6 +56,14 @@ active_users = filter_by_active_status(users)
 
 If you need to name something `data`, `result`, `info`, `temp`, or `manager` — the abstraction itself is unclear. The name is a symptom.
 
+### Comments
+
+Inside a function, comments carry the *why*; the code already carries the *what*. Restating the line below it is a second copy of the same information — and it goes stale the moment someone edits that line. Comment only what the reader can't infer: a non-obvious constraint, a workaround, a deliberate trade-off, a business rule.
+
+Doc comments on a public API or an interface others implement are the exception — there the *what* is the contract, and callers shouldn't have to read the implementation to learn it: units, ownership, error and failure modes, side effects, thread-safety. State what a caller can't infer from the signature, and no more.
+
+Either way, keep it short — one line when one line does it. A comment longer than the code it describes means either the code needs restructuring or most of the comment isn't earning its place. Don't reflexively docstring every small private helper, and don't narrate the edit (`// changed from X`, `// new helper`) — that's commit-message material.
+
 ### Structure
 
 Code should tell a sequential story. The reader should follow one narrative, top to bottom, without jumping between functions to reconstruct intent. Watch for:
@@ -142,7 +150,7 @@ Before submitting, read the diff as if you're seeing it for the first time:
 
 1. **Can I state in one sentence what each function does?** If not, the problem is the structure, not the description — decompose.
 2. **Does every name compress intent?** If a name could apply to many things, it's not doing its job.
-3. **Does this piece of code need to exist?** Apply to every line, check, abstraction, and parameter: if deleting it breaks nothing and clarifies nothing, delete it. Defensive checks are the most common offender here, especially ones guarding a case that's merely imaginable rather than actually reachable in this system — if the type system, caller, or the system's real invariants already prevent a failure, remove the handler. If an abstraction has no real second use case yet, inline it.
+3. **Does this piece of code need to exist?** Apply to every line, check, comment, abstraction, and parameter: if deleting it breaks nothing and clarifies nothing, delete it. Defensive checks are the most common offender here, especially ones guarding a case that's merely imaginable rather than actually reachable in this system — if the type system, caller, or the system's real invariants already prevent a failure, remove the handler. If an abstraction has no real second use case yet, inline it.
 4. **Does solution complexity match problem complexity?** If the solution is much more complex, re-examine what problem you're actually solving.
 
 ## Testing Code

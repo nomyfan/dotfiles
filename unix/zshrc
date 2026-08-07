@@ -76,3 +76,15 @@ diffs() {
 [ -s "$HOME/export-esp.sh" ] && source "$HOME/export-esp.sh"
 # END ESP32
 
+cdb() {
+  local n=${1:-1}
+  local target=""
+
+  if [[ $n != <-> ]] || (( n < 1 )); then
+    print -u2 "Usage: cdb [positive integer]"
+    return 2
+  fi
+
+  repeat $n target+="../"
+  builtin cd "$target"
+}

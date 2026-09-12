@@ -3,7 +3,7 @@ spacing = "normal"
 
 [appearance.themes]
 selected_system_themes = { dark = "dark", light = "light" }
-theme = { custom = { name = "Vellum-dark", path = "vellum-dark.yaml" } }
+theme = "dark"
 system_theme = false
 
 [appearance.text]
@@ -36,8 +36,12 @@ compact_subtitle = "branch"
 [appearance.icon]
 app_icon = "classic_1"
 
+[appearance.cursor]
+cursor_display_type = "bar"
+cursor_blink = "enabled"
+
 [privacy]
-crash_reporting_enabled = true
+crash_reporting_enabled = false
 telemetry_enabled = false
 custom_secret_regex_list = [
   { name = "IPv4 Address", pattern = '\b((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}\b' },

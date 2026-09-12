@@ -32,5 +32,6 @@
     pstree
     ast-grep
     fastfetch
+    oxipng
   ;
 }

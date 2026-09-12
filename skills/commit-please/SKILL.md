@@ -1,13 +1,13 @@
 ---
 name: commit-please
-description: Intelligent git commit assistant that analyzes staged and unstaged changes in the current working directory, generates commit messages following Conventional Commits specification (conventionalcommits.org), and executes commits after user approval. Use when the user asks to create a commit, wants help writing a commit message, or says "commit these changes" or similar requests.
+description: Intelligent git commit assistant that analyzes staged and unstaged changes in the current working directory, generates commit messages following Conventional Commits specification (conventionalcommits.org), and executes requested commits. Use when the user asks to create a commit, wants help writing a commit message, or says "commit these changes" or similar requests.
 ---
 
 # Commit Please
 
 ## Overview
 
-This skill helps create well-crafted git commits following the Conventional Commits specification. It analyzes changes in the working directory, generates meaningful commit messages, and executes the commit after user approval.
+This skill helps create well-crafted git commits following the Conventional Commits specification. It analyzes changes in the working directory, generates meaningful commit messages, and executes requested commits directly. If the user only asks for a commit message, provide the message without executing a commit.
 
 ## Workflow
 
@@ -113,27 +113,9 @@ refactor(database): migrate to async/await pattern
 chore(deps): update typescript to 5.0
 ```
 
-### 3. Present Message for Approval
+### 3. Execute the Requested Commit
 
-Show the generated commit message to the user clearly and ask for approval. Use the AskUserQuestion tool with options like:
-- "Approve and commit" (recommended option)
-- "Suggest edits"
-- "Cancel"
-
-**Example presentation:**
-```
-I've analyzed the changes and generated this commit message following Conventional Commits:
-
----
-feat(profile): add user avatar upload functionality
----
-
-Would you like me to proceed with this commit message?
-```
-
-### 4. Handle User Response
-
-**If approved:** Execute the commit using:
+When the user asks to create a commit, use the generated message and execute the commit without asking for additional confirmation:
 ```bash
 git commit -m "$(cat <<'EOF'
 [commit message here]
@@ -141,23 +123,14 @@ EOF
 )"
 ```
 
-**If edits requested:**
-- Ask the user what they'd like to change
-- Regenerate the message incorporating their feedback
-- Present again for approval
-
-**If cancelled:**
-- Acknowledge and end the workflow
-- No commit should be executed
-
-### 5. Confirm Success
+### 4. Confirm Success
 
 After executing the commit, run `git log -1` to confirm the commit was created successfully and show the user the commit details.
 
 ## Important Constraints
 
 **DO NOT:**
-- Commit without explicit user approval
+- Execute a commit when the user only asks for a commit message
 - Stage or unstage files unless explicitly requested
 - Push changes to remote (unless separately requested)
 - Amend commits or use other git flags unless explicitly requested

@@ -45,6 +45,13 @@ path = "skills/productivity/handoff"
 sha = "386d4ff719a7c420ad1454232d0436b01f1b8c17"
 checksum = "sha256:87e353708ab36062eac54ddb593a97ca553c0cb4bfa1ed1fdaf68520700723f1"
 
+[skills.herdr]
+source_url = "https://github.com/herdrdev/herdr/tree/master/skills/herdr"
+slug = "herdrdev/herdr"
+path = "skills/herdr"
+sha = "1ab85d31ac59c484a7347a237abfb072fe1cf166"
+checksum = "sha256:66715d76e5947497431ec0db32f2693b9c916ad799c3f32b99e6174b4b9c607f"
+
 [skills.skill-creator]
 source_url = "https://github.com/anthropics/skills/tree/main/skills/skill-creator"
 slug = "anthropics/skills"

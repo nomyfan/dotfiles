@@ -30,7 +30,7 @@ Clever code is a liability. Clear code is an asset.
 
 ## Implementing From a Design Brief
 
-When the task continues a `docs/specs/*.md` design brief, treat it as the plan, not gospel — designs are wrong more often than we'd like once they meet real code.
+When the task continues a `docs/implementation/*.md` design brief, treat it as the plan, not gospel — designs are wrong more often than we'd like once they meet real code.
 
 **Keep the roadmap current.** As each `Implementation Roadmap` step completes and its verification passes, check it off in the brief (`- [ ]` → `- [x]`). A roadmap that isn't updated is worse than no roadmap — it tells the next reader the wrong thing.
 

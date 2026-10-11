@@ -33,7 +33,7 @@ Use targeted, specific questions. Use the structured user-input tool when availa
 
 ## Output
 
-Once the problem is clear, write a requirement summary to `docs/requirement/{slug}.md`, where `{slug}` is a short kebab-case name for the requirement (e.g. `async-export-pipeline`). This file is the handoff to design — it should contain everything needed to start designing without re-reading the conversation.
+Once the problem is clear, write a requirement summary to `docs/requirement/{date}-{slug}.md`, where `{date}` is today's date in `YYYY-MM-DD` format and `{slug}` is a short kebab-case name for the requirement (e.g. `docs/requirement/2026-10-11-async-export-pipeline.md`). This file is the handoff to design — it should contain everything needed to start designing without re-reading the conversation.
 
 Use this structure. Keep it concise — the entire file should typically be under 50 lines. Omit sections that add nothing.
 

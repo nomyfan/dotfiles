@@ -9,9 +9,9 @@ description: Guide engineers through design before code for new feature design, 
 
 Read the requirement — either from a requirement doc in `docs/requirement/` or from the user's description — along with any relevant existing code, then produce a **design brief**. The brief makes design decisions explicit before code makes them implicit.
 
-**Input.** This skill expects the problem to be already understood. If a requirement doc exists at `docs/requirement/{slug}.md`, read it and use the same slug for the design brief. If the user describes the problem directly with enough clarity to make design decisions (concrete problem, clear scope, known constraints), that works too. If the requirement is vague — a sentence or two with no clear problem definition or scope — run the engineer-requirement skill first to clarify, rather than guessing at what the user needs.
+**Input.** This skill expects the problem to be already understood. If a requirement doc exists at `docs/requirement/{date}-{slug}.md`, read it and use the same file name for the design brief. If the user describes the problem directly with enough clarity to make design decisions (concrete problem, clear scope, known constraints), that works too. If the requirement is vague — a sentence or two with no clear problem definition or scope — run the engineer-requirement skill first to clarify, rather than guessing at what the user needs.
 
-Write the brief to `docs/design/{slug}.md`, where `{slug}` is the same kebab-case slug used in the requirement doc, or a short name for what the design achieves if there's no requirement doc.
+Write the brief to `docs/design/{date}-{slug}.md`. If there's a requirement doc, reuse its file name exactly — same date, same slug — so the two stay paired. Otherwise `{date}` is today's date in `YYYY-MM-DD` format and `{slug}` is a short kebab-case name for what the design achieves (e.g. `docs/design/2026-10-11-async-export-pipeline.md`).
 
 **Revising an existing brief.** This skill also runs when implementation reveals that a Load-Bearing Decision, Interface, or the Data Model in an existing brief no longer holds. The brief is in `docs/implementation/` at that point — edit it in place rather than creating a new file. Apply the same rigor (compare alternatives if a genuine second option exists), update the affected sections directly, and record the discarded original choice under `## Alternatives Considered` so the history isn't lost.
 
@@ -23,7 +23,7 @@ For each load-bearing decision, check whether a second approach exists that you'
 
 **Approval gate.** Writing the brief is not the end of this skill — it's a checkpoint. Once the brief is written to disk, stop and ask the user to review it and approve — point to the file path and a short summary of the key decisions, don't re-paste the brief's contents into the conversation. Do not proceed to implementation until the user approves. If the user requests changes, revise the brief and ask again.
 
-**After approval.** When the user approves, move the brief from `docs/design/{slug}.md` to `docs/implementation/{slug}.md`. This signals that the design is ready for implementation. Then stop — moving the file is the end of this skill's responsibility. Wait for the user to explicitly request implementation before writing any code. For brief revisions triggered mid-implementation: the file is already in `docs/implementation/` — edit it in place, pause and get approval on the updated section before resuming code changes.
+**After approval.** When the user approves, move the brief from `docs/design/{date}-{slug}.md` to `docs/implementation/{date}-{slug}.md`, keeping the file name unchanged. This signals that the design is ready for implementation. Then stop — moving the file is the end of this skill's responsibility. Wait for the user to explicitly request implementation before writing any code. For brief revisions triggered mid-implementation: the file is already in `docs/implementation/` — edit it in place, pause and get approval on the updated section before resuming code changes.
 
 ## Design Brief Template
 
@@ -32,7 +32,7 @@ Keep the brief concise. Omit sections that add no decision value, and spend deta
 ```
 ## Problem
 One sentence. What is being solved and for whom.
-Link to requirement doc if one exists: `../requirement/{slug}.md`
+Link to requirement doc if one exists: `../requirement/{date}-{slug}.md`
 
 ## Scope
 In: what this design covers.

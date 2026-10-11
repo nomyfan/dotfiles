@@ -11,24 +11,24 @@ source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/en
 collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
 slug = "nomyfan/dotfiles"
 path = "skills/engineer-skills/engineer-design"
-sha = "fcf86cf917a30c705192d54acc1632e29668bfa9"
-checksum = "sha256:d1782078bf6a3b7d9b119903d1eee229ade157cac5f30e3a4c2e4b12627bdde0"
+sha = "d52299135d1a6eb3a6a9caef588002d6aa372a3b"
+checksum = "sha256:0052a0d2e6127b43e272565334b9a0ec1e819e4cacaa4efad234d5682138e62e"
 
 [skills.engineer-implement]
 source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-implement"
 collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
 slug = "nomyfan/dotfiles"
 path = "skills/engineer-skills/engineer-implement"
-sha = "e544e43c4ed0d2a375efe372bcd7a23b89ef7620"
-checksum = "sha256:8c7d8a50cad666a2a1d98fb3af0ae8ab8c72d6d4c58c2a7c57520775dffe1f09"
+sha = "d52299135d1a6eb3a6a9caef588002d6aa372a3b"
+checksum = "sha256:0b6cefc10e4acabffdab577742b33bfd27d451b572276bc7850a90e13cb21ffd"
 
 [skills.engineer-requirement]
 source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-requirement"
 collection_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills"
 slug = "nomyfan/dotfiles"
 path = "skills/engineer-skills/engineer-requirement"
-sha = "fcf86cf917a30c705192d54acc1632e29668bfa9"
-checksum = "sha256:91a600f256be3c6c532d41b8f3aac6c901bbadb98c067539ebdd3725f69ea5bf"
+sha = "d52299135d1a6eb3a6a9caef588002d6aa372a3b"
+checksum = "sha256:140a7262821543363bb92973d4c2845c87b3d72ce7111773d54f65ae95459224"
 
 [skills.engineer-review]
 source_url = "https://github.com/nomyfan/dotfiles/tree/engineer-skills/skills/engineer-skills/engineer-review"

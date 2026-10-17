@@ -33,5 +33,6 @@
     ast-grep
     fastfetch
     oxipng
+    coreutils
   ;
 }

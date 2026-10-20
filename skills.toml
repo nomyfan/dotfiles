@@ -49,8 +49,8 @@ checksum = "sha256:87e353708ab36062eac54ddb593a97ca553c0cb4bfa1ed1fdaf6852070072
 source_url = "https://github.com/herdrdev/herdr/tree/master/skills/herdr"
 slug = "herdrdev/herdr"
 path = "skills/herdr"
-sha = "1ab85d31ac59c484a7347a237abfb072fe1cf166"
-checksum = "sha256:66715d76e5947497431ec0db32f2693b9c916ad799c3f32b99e6174b4b9c607f"
+sha = "1cbd794559fb139f95f1bdb4b2a8998082017d0e"
+checksum = "sha256:72177e911f55467de8737174072ec6bb08e30bbf62bceabcb69678e944398b18"
 
 [skills.skill-creator]
 source_url = "https://github.com/anthropics/skills/tree/main/skills/skill-creator"

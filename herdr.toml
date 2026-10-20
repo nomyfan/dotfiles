@@ -1,0 +1,11 @@
+onboarding = false
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+[ui]
+copy_on_select = false
+
+[ui.toast]
+delivery = "system"

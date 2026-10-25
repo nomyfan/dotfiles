@@ -3,7 +3,7 @@ zstyle ":omz:update" mode disabled
 export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 
-plugins=(git)
+plugins=(git zsh-shift-select)
 
 source $ZSH/oh-my-zsh.sh
 source "${${(%):-%x}:A:h}/utils.zsh"

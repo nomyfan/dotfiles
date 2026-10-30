@@ -34,5 +34,8 @@
     fastfetch
     oxipng
     coreutils
+    gnutar
+    glab
+    btop
   ;
 }

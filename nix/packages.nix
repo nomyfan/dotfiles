@@ -37,5 +37,6 @@
     gnutar
     glab
     btop
+    ffmpeg
   ;
 }

@@ -8,6 +8,10 @@ Keep accurate, widely accepted technical terms. Do not force established industr
 
 Always prioritize accuracy, clarity, natural phrasing, and ease of understanding. Do not aim for dense terminology, excessive abstraction, or the appearance of professionalism, and do not sacrifice the accuracy of technical terms in an effort to simplify the language.
 
+## Shell Environment
+
+In this environment, `ls` is an alias for `eza`.
+
 ## Rex Usage
 
 Use Rex and load its skill only when the user explicitly asks to use Rex, or the task requires a Rex-specific capability: managing Rex sessions, tabs, or panes; interacting with a particular existing Rex terminal or reading its output; controlling a connected Rex app; or working on another machine through Rex. Use the standard execution tool for shell operations that do not require Rex-specific capabilities.

@@ -1,5 +1,5 @@
 [appearance]
-spacing = "normal"
+spacing = "compact"
 
 [appearance.themes]
 selected_system_themes = { dark = "dark", light = "light" }
@@ -91,6 +91,7 @@ mode = "enabled"
 play_notification_sound = true
 
 [terminal]
+osc52_clipboard_access = "write_only"
 
 [terminal.input]
 honor_ps1 = true

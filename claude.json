@@ -1,13 +1,28 @@
 {
   "env": {
     "HTTPS_PROXY": "http://localhost:7890",
-    "DISABLE_AUTOUPDATER": "1"
+    "DISABLE_AUTOUPDATER": "1",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "500000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
-  "model": "claude-opus-4-7",
+  "model": "opus",
   "statusLine": {
     "type": "command",
-    "command": "/Users/nomyfan/.claude/statusline-command.sh",
+    "command": "/Users/nomyfan/.claude/cc-statusline.sh",
     "padding": 0
   },
-  "effortLevel": "medium"
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "awaySummaryEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "auto",
+  "editorMode": "vim",
+  "autoCompactEnabled": true,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "copyOnSelect": false
 }

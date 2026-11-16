@@ -1,0 +1,7 @@
+{
+  "model": "Gemini 4 Argon (High)",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.gemini/antigravity-cli/agy-statusline.sh"
+  }
+}
